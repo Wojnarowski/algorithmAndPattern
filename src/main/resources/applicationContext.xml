@@ -17,5 +17,6 @@
     </bean>
 
     <bean name="eventReceiver" class="com.spring.sourcecode.eventpublisher.EventReceiver"/>
+    <bean name="eventReceiver2" class="com.spring.sourcecode.eventpublisher.EventReceiver2"/>
 
 </beans>
