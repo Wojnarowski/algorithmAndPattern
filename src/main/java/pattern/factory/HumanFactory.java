@@ -1,5 +1,8 @@
 package pattern.factory;
 
+/**
+ * 具体实现工厂
+ */
 public class HumanFactory extends AbstractHumanFactory{
     public <T extends Human> T createHuman(Class<T> c) {
         //定义一个人种
