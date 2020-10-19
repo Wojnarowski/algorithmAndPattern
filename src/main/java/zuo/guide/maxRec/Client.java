@@ -19,10 +19,11 @@ import java.util.Stack;
  */
 public class Client {
     public static void main(String[] args) {
-
+            int[] height = new int[]{3,2,3,0};
+        System.out.println(maxRecFromBottom(height));
     }
 
-    public int maxRecFromBottom(int [] height){
+    public static int maxRecFromBottom(int [] height){
         if(height == null|| height.length==0){
             return 0;
         }
