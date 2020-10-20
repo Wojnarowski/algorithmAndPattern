@@ -1,7 +1,7 @@
 package zuo.guide.before;
 
 
-import vip.AlgorithmUtil;
+import zuo.vip.AlgorithmUtil;
 
 import java.util.LinkedList;
 
