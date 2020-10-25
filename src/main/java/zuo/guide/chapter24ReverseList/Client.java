@@ -6,5 +6,16 @@ package zuo.guide.chapter24ReverseList;
  */
 public class Client {
 
+    public Node reverseList(Node head){
+        Node pre = null;
+        Node next= null;
+        while(head!=null){
+            next=head.next;
+            head.next=pre;
+            pre=head;
+            head=next;
+        }
+        return pre;
+    }
 
 }
