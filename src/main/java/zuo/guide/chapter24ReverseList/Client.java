@@ -31,9 +31,20 @@ public class Client {
             cur.next=pre;
             pre=cur;
             cur=next;
-
         }
         return pre;
+    }
+
+    public static DoubleNode reverserDoubleList(DoubleNode head){
+        DoubleNode pre = null;
+        DoubleNode next = null;
+        while(head!=null){
+            next=head.next;
+            head.next=pre;
+            pre=head.next;
+            head.next=head;
+        }
+        return head;
     }
 
 }
