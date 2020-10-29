@@ -35,8 +35,8 @@ public class Client {
         Node cur =head;
         while(cur!=null){
             count++;
-            fromPre=count==from-1?cur:fromPre;
-            toNext=count==to+1?cur:toNext;
+            fromPre=count==from-1?cur:fromPre;//如果在len++的过程中，找到了from前一个，那就将pre定为此时累加到的这个节点
+            toNext=count==to+1?cur:toNext; //同理，如果在len++过程中找到了to后面的一个，就赋值为当前点，否则均为null
             cur=cur.next;
         }
         if(from>to||from<1||to>count){
