@@ -36,4 +36,28 @@ public class Client {
         return head;
     }
 
+
+    public Node josephusKill2(Node head,int m) {
+        if (head == null || head.next == head || m < 1) {
+            return head;
+        }
+         Node cur = head.next; 
+        int tmp = 1;// tmp->list size
+        while (cur != head) {
+            tmp++;
+            cur = cur.next;
+        }
+        tmp = getLive(tmp, m);//tmp -> service node position 
+        while (--tmp != 0) {
+            head = head.next;
+        }
+        head.next = head;
+        return head; 
+    }
+    public  int getLive(int i, int m){
+        if (i==1){
+             return 1;
+        } 
+        return (getLive(i- 1, m)+ m-1)%i+1;
+    }
 }
