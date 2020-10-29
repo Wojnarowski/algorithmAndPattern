@@ -41,7 +41,7 @@ public class Client {
         if (head == null || head.next == head || m < 1) {
             return head;
         }
-         Node cur = head.next; 
+        Node cur = head.next;
         int tmp = 1;// tmp->list size
         while (cur != head) {
             tmp++;
@@ -52,12 +52,14 @@ public class Client {
             head = head.next;
         }
         head.next = head;
-        return head; 
+        return head;
     }
     public  int getLive(int i, int m){
         if (i==1){
-             return 1;
-        } 
+            return 1;
+        }
         return (getLive(i- 1, m)+ m-1)%i+1;
     }
+
+
 }
