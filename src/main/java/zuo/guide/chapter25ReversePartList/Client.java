@@ -31,9 +31,32 @@ public class Client {
         //代表to节点的下一个节点
         Node toNext=null;
         //代表form节点的前一个节点
-        Node toPre=null;
+        Node fromPre=null;
         Node cur =head;
-
-
+        while(cur!=null){
+            count++;
+            fromPre=count==from-1?cur:fromPre;
+            toNext=count==to+1?cur:toNext;
+            cur=cur.next;
+        }
+        if(from>to||from<1||to>count){
+            return head;
+        }
+        cur=fromPre==null?head:fromPre.next;
+        Node prev=toNext;
+        Node next;
+        while(cur!=toNext){
+            next=cur.next;
+            cur.next=prev;
+            prev=cur;
+            cur=next;
+        }
+        //头结点不用反转的情况,将不用反转的链表和已经反转后的链表链接起来
+        if(fromPre!=null){
+            fromPre.next=prev;
+            return  head;
+        }
+        //头结点需要反转的情况，返回新的头结点
+        return prev;
     }
 }
