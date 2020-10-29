@@ -70,13 +70,14 @@ public class Client {
         /**
          * 重点：TODO
          *      快的一次走两步,慢的一次走一步
-         *      那么最后快的结束了慢的走了一半,此时在走的过程中需要压栈
+         *      那么最后快的结束了慢的走了一半
          */
         while(cur.next !=null && cur.next.next!=null){
             right=right.next;
             cur=cur.next.next;
         }
 
+        //将右边开始的数据进行压栈
         Stack<Node> stack = new Stack<Node>();
         while(right!=null){
             stack.push(right);
