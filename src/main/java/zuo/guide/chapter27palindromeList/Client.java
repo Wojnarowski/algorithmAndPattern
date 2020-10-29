@@ -21,7 +21,7 @@ public class Client {
     }
 
     /**
-     * 用栈来实现
+     * 用栈来实现 整个一个栈
      * @param head
      * @return
      */
@@ -39,6 +39,21 @@ public class Client {
             head=head.next;
         }
         return true;
+    }
+
+
+    /**
+     * 用栈来实现   找出中点折半，将后半段放入栈中
+     * @param head
+     * @return
+     */
+    public static boolean isPalindromeList2(Node  head){
+        if(head.next==null || head==null){
+            return true;
+        }
+
+
+
     }
 
 }
