@@ -93,4 +93,27 @@ public class Client {
 
     }
 
+
+    /**
+     * 1.首先改变链表右边结构，使整个右半区反转，然后指向中间节点
+     * 2.leftStart和rightStart同时向中间移动，移动每一步都比较leftStart和rightStart
+     * 节点的值，看是否一样。如果都一样，说明链表是回文结构，如果不一样不是回文结构。
+     * 3.不管返回的结果是true还是false，在返回前都应该把链表恢复成原来的样子。
+     * 4.链表恢复成原来的结构后，返回检查结果。
+     * @param head
+     * @return
+     */
+    public static boolean isPalindromeList2(Node  head){
+        if(head ==null || head.next==null){
+            return true;
+        }
+
+        Node n1 = head;
+        Node n2 = head;
+        while(n2.next!=null && n2.next.next!=null){
+                n1=n1.next;
+                n2=n2.next.next;
+        }
+    }
+
 }
