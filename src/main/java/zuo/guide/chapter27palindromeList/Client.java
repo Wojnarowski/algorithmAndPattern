@@ -100,6 +100,7 @@ public class Client {
      * 节点的值，看是否一样。如果都一样，说明链表是回文结构，如果不一样不是回文结构。
      * 3.不管返回的结果是true还是false，在返回前都应该把链表恢复成原来的样子。
      * 4.链表恢复成原来的结构后，返回检查结果。
+     * 不是很好理解
      * @param head
      * @return
      */
@@ -147,7 +148,6 @@ public class Client {
             n1=n2;
         }
         return  res;
-
     }
 
 }
