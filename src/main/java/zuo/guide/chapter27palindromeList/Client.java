@@ -103,17 +103,50 @@ public class Client {
      * @param head
      * @return
      */
-    public static boolean isPalindromeList2(Node  head){
+    public static boolean isPalindromeList3(Node  head){
         if(head ==null || head.next==null){
             return true;
         }
 
         Node n1 = head;
         Node n2 = head;
+        //利用快慢指针查找中间节点
         while(n2.next!=null && n2.next.next!=null){
-                n1=n1.next;
-                n2=n2.next.next;
+                n1=n1.next;  //中部
+                n2=n2.next.next; //结尾
         }
+        n2=n1.next;  //n2 右半部分第一个节点
+        n1.next=null;  //mid.next -> null
+        Node n3 = null;
+        //反转右半区
+        while(n2!=null){
+            n3=n2.next; //n3 保存下一个节点
+            n2.next=n1; //下一个反转节点
+            n1=n2;  //n1 移动
+            n2=n3;  //n2 移动
+        }
+
+        n3 = n1;//n3  保存最后一个节点
+        n2 = head; //n2 左边第一个节点
+        boolean res = true;
+        while(n1 !=null && n2 !=null){
+            if(n1.value!=n2.value){
+                res = false;
+                break;
+            }
+            n1=n1.next;
+            n2=n2.next;
+        }
+        n1=n3.next;
+        n3.next=null;
+        //回复列表
+        while(n1!=null){
+            n2=n1.next;
+            n1.next=n3;
+            n3=n1;
+            n1=n2;
+        }
+        return  res;
     }
 
 }
