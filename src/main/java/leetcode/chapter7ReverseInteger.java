@@ -27,6 +27,8 @@ public class chapter7ReverseInteger {
         System.out.println(reverse(123));
         System.out.println(reverse(-123));
         System.out.println(reverse(120));
+        System.out.println(reverse(1534236469));
+
     }
 
     static int reverse(int x){
@@ -39,7 +41,20 @@ public class chapter7ReverseInteger {
 //            x=x%10;
 //        }
         while(x!=0){
+            //每次取末尾数字
             int pop =x%10;
+
+            //判断是否 大于 最大32位整数
+            if (result>214748364 || (result==214748364 && pop>7)) {
+                return 0;
+            }
+            //判断是否 小于 最小32位整数
+            if (result<-214748364 || (result==-214748364 && pop<-8)) {
+                return 0;
+            }
+
+
+
             result=result*10+pop;
             x=x/10;
         }
