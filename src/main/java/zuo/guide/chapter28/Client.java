@@ -2,6 +2,7 @@ package zuo.guide.chapter28;
 
 /**
  * 打个卡吧，最近工作比较忙
+ * 在打一天卡吧
  */
 public class Client {
 
