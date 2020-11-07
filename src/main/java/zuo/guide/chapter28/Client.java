@@ -6,6 +6,7 @@ package zuo.guide.chapter28;
  * 第三天打卡
  * 第四天打卡
  * 第五天打卡
+ * 第六天先打个卡
  */
 public class Client {
 
