@@ -21,6 +21,7 @@ public class Client {
     public static void main(String[] args) {
             int[] height = new int[]{3,2,3,0};
         System.out.println(maxRecFromBottom(height));
+        System.out.println();
     }
 
     public static int maxRecFromBottom(int [] height){
