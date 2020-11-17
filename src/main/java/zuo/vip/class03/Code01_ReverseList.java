@@ -54,10 +54,15 @@ public class Code01_ReverseList {
         Node pre = null;
         Node next = null;
         while (head != null) {
-            next = head.next;  //  将 2给到 next
-            head.next = pre;   // 将头的下一个结点指向pre
-            pre = head;        // 将head 给 pre
-            head = next;       // 将下一个节点给head
+            next = head.next;  //  将当前头结点指针赋给next
+            head.next = pre;   //  将头结点指针指向pre
+            pre = head;        // 将head的值赋给pre
+            head = next;       // 让head节点来到下一个
+
+//            next=head.next;
+//            head.next=pre;
+//            pre=head;
+//            head=next;
         }
         return pre;
     }
