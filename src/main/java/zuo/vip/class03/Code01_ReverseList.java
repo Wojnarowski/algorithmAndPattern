@@ -58,11 +58,6 @@ public class Code01_ReverseList {
             head.next = pre;   //  将头结点指针指向pre
             pre = head;        // 将head的值赋给pre
             head = next;       // 让head节点来到下一个
-
-//            next=head.next;
-//            head.next=pre;
-//            pre=head;
-//            head=next;
         }
         return pre;
     }
