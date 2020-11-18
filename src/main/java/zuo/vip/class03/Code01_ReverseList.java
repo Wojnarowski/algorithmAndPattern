@@ -1,5 +1,7 @@
 package zuo.vip.class03;
 
+import java.util.ArrayList;
+
 public class Code01_ReverseList {
 
 
@@ -74,5 +76,25 @@ public class Code01_ReverseList {
         }
         return pre;
     }
+
+
+    public static Node testReverseLinkedList(Node head) {
+        if (head == null) {
+            return null;
+        }
+        ArrayList<Node> list = new ArrayList<Node>();
+        while (head != null) {
+            list.add(head);
+            head = head.next;
+        }
+        list.get(0).next = null;
+        int N = list.size();
+        for (int i = 1; i < N; i++) {
+            list.get(i).next = list.get(i - 1);
+        }
+        return list.get(N - 1);
+    }
+
+
 
 }
