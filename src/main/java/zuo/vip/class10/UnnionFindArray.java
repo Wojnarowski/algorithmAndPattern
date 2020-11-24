@@ -3,7 +3,7 @@ package zuo.vip.class10;
 /**
  * 用数组实现并查集，元素内数字代表集合号
  */
-public class UnnionFind2 {
+public class UnnionFindArray {
 
     /**
      * 数组,标识并查集所有元素
@@ -16,7 +16,7 @@ public class UnnionFind2 {
     private int size;
 
 
-    public  UnnionFind2(int size){
+    public UnnionFindArray(int size){
         this.size=size;
         id =new int[size];
         for(int i=0;i<size;i++){
@@ -79,6 +79,40 @@ public class UnnionFind2 {
             System.out.print(id + "\t");
         }
         System.out.println();
+    }
+
+    public static void main(String[] args) {
+        int n = 10;
+        UnnionFindArray union = new UnnionFindArray(n);
+        System.out.println("初始：");
+        union.printArr();
+
+        System.out.println("连接了5 6");
+        union.unionElements(5, 6);
+        union.printArr();
+
+        System.out.println("连接了1 2");
+        union.unionElements(1, 2);
+        union.printArr();
+
+        System.out.println("连接了2 3");
+        union.unionElements(2, 3);
+        union.printArr();
+
+        System.out.println("连接了1 4");
+        union.unionElements(1, 4);
+        union.printArr();
+
+        System.out.println("连接了1 5");
+        union.unionElements(1, 5);
+        union.printArr();
+
+        System.out.println("1  6 是否连接：" + union.isConnected(1, 6));
+
+        System.out.println("1  8 是否连接：" + union.isConnected(1, 8));
+
+
+
     }
 
 
