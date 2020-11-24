@@ -96,5 +96,29 @@ public class Code01_ReverseList {
     }
 
 
+    public static DoubleNode testReverseDoubleList(DoubleNode head) {
+        if (head == null) {
+            return null;
+        }
+        ArrayList<DoubleNode> list = new ArrayList<DoubleNode>();
+        while (head != null) {
+            list.add(head);
+            head = head.next;
+        }
+        list.get(0).next = null;
+        DoubleNode pre = list.get(0);
+        int N = list.size();
+        for (int i = 1; i < N; i++) {
+            DoubleNode cur = list.get(i);
+            cur.last = null;
+            cur.next = pre;
+            pre.last = cur;
+            pre = cur;
+        }
+        return list.get(N - 1);
+    }
+
+
+
 
 }
