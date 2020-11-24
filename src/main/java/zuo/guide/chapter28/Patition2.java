@@ -5,7 +5,7 @@ package zuo.guide.chapter28;
  *将链表分成左边小，中间相等，右边大的形式。
  *
  * */
-public class Client {
+public class Patition2 {
 
 
     public static class Node {
@@ -35,6 +35,13 @@ public class Client {
     }
 
     public static Node listPartition1(Node head, int pivot){
+        Node sH=null;//小的头
+        Node sT=null;//小的尾
+        Node eH=null;//相等的头
+        Node eT=null;//相等的尾
+        Node bH=null;//大的头
+        Node bT=null;//大的尾
+
         if(head == null){
             return head;
         }
