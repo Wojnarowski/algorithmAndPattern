@@ -11,7 +11,7 @@ import java.util.Stack;
  */
 public class Client {
 
-    public class Node{
+    public static class Node{
         private int value;
         private Node next;
         public Node(int data ){
@@ -19,7 +19,7 @@ public class Client {
         }
     }
 
-    public Node addList(Node head1,Node head2){
+    public static Node addList(Node head1, Node head2){
         Stack<Integer> s1 = new Stack<Integer>();
         Stack<Integer> s2 = new Stack<Integer>();
         while(head1!=null){
@@ -31,9 +31,45 @@ public class Client {
             s2.push(head2.value);
             head2=head2.next;
         }
+        int ca =0;
+        int n1 = 0;
+        int n2 = 0 ;
+        int n = 0;
+        Node node = null;
+        Node pre = null;
+        while(!s1.isEmpty() || !s2.isEmpty()){
+                n1=s1.isEmpty() ? 0 : s1.pop();
+                n2=s2.isEmpty() ? 0 : s2.pop();
+                n=n1 + n2 + ca;
+                pre=node;
+                node=new Node(n % 10);
+                node.next=pre;
+                ca = n / 10;
+        }
 
-        return  null;
+        if(ca == 1){
+            pre=node;
+            node = new Node(1);
+            node.next=pre;
+        }
+        return  node;
+    }
 
+
+    public static void main(String[] args) {
+        Node node1 = new Node(9);
+        Node node12 = new Node(3);
+        Node node13 = new Node(7);
+        node1.next=node12;
+        node12.next=node13;
+
+
+        Node node2 = new Node(6);
+        Node node22 = new Node(3);
+        node2.next=node22;
+
+        Node node = addList(node1,node2);
+        System.out.println(node);
 
 
     }
