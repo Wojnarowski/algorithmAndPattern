@@ -7,6 +7,15 @@ import java.util.Stack;
  */
 public class ReverseStackUsingRecursive {
 
+    public static void  reverse(Stack stack){
+        if(stack.isEmpty()){
+            return ;
+        }
+        int i=f(stack);
+        reverse(stack);
+        stack.push(i);
+    }
+
 
     /**
      * 穿减去一个栈返回当前栈的最后一个值
@@ -48,6 +57,13 @@ public class ReverseStackUsingRecursive {
          */
         int  result = f(test);
         System.out.println("栈底元素="+result);
+
+        System.out.println("--------------反转后--------------");
+        reverse(test);
+        System.out.println("--------------打印反转后链表--------------");
+        while (!test.isEmpty()){
+            System.out.println(test.pop());
+        }
     }
 
 
