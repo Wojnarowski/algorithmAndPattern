@@ -75,6 +75,31 @@ public class Client {
     }
 
 
+    /**
+     * 1.将两个链表逆序，这样就可以依次得到从低位到高位的数字。
+     * 例如∶链表9->3->7，逆序后变为7->3->9;链表6->3，逆序后变为3->6。
+     *
+     *  2．同步遍历两个逆序后的链表，这样就依次得到两个链表从低位到高位的数字，在这个过程中生成相加链表即可，同时需要关注每一步是否有进位，
+     * 用ca表示。具体过程与方法一的步骤 2相同。
+     *
+     *
+     *  3.当两个链表都遍历完成后，还要关注进位信息是否为1，如果为1，还要生成一个节点值为1 的新节点。
+     *
+     *  4.将两个逆序的链表再逆序一次，即调整成原来的样子。
+     *
+     * 5.返回新生成的结果链表。
+     *
+     *
+     * @param head1
+     * @param head2
+     * @return
+     */
+    public static Node addList2(Node head1, Node head2){
+
+        return null;
+    }
+
+
     public static void main(String[] args) {
         Node node1 = new Node(9);
         Node node12 = new Node(3);
