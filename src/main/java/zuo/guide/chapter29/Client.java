@@ -96,8 +96,23 @@ public class Client {
      */
     public static Node addList2(Node head1, Node head2){
 
+        head1=reverseList(head1);
+        head2=reverseList(head2);
+
 
         return null;
+    }
+
+    private static Node reverseList(Node head) {
+        Node pre = null;
+        Node next = null;
+       while(head!=null){
+           next=head.next;
+           head.next=pre;
+           pre=head;
+           head=next;
+       }
+
     }
 
 
