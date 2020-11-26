@@ -19,7 +19,26 @@ public class Client {
         }
     }
 
-    public static Node addList(Node head1, Node head2){
+    /**
+     * 1．将两个链表分别从左到右遍历，遍历过程中将值压栈，这样就生成了两个链表节点值的逆序栈，分别表示为s1 和 s2。
+     *  例如∶链表9->3->7，s1从栈顶到栈底为7，3，9;链表6>3，s2从栈顶到栈底为3，6。
+     *
+     *
+     * 2.     * 将s1和s2同步弹出，这样就相当于两个链表从低位到高位依次弹出，在这个过程中生成相加链表即可，同时需要关注每一步是否有进位，用 ca 表示。
+     *  例如∶s1先弹出7，s2 先弹出3，这一步相加结果为10，产生了进位，令ca=1，然后生成一个节点值为0的新节点，记为newl;
+     * s1 再弹出3，s2再弹出6，这时进位为ca=1，所以这一步相加结果为10，继续产生进位，仍令ca=1，然后生成一个节点值为0的新节点记为 new2，
+     * 令new2.next=newl; s1 再弹出9，s2为空，这时ca=1，这一步相加结果为10，仍令ca=1，然后生成一个节点值为0的新节点，记为 new3，令 new3.next=new2。
+     * 这一步也是模拟简单的从低位到高位进位相加的过程。
+     *
+     *  3.当s1 和s2 都为空时，还要关注一下进位信息是否为1，如果为1，比如步骤2中的例子，表示还要生成一个节点值为1的新节点，记为new4，令 new4.next=new3。
+     *
+     *
+     * z 4.返回新生成的结果链表即可。
+     * @param head1
+     * @param head2
+     * @return
+     */
+    public static Node addList1(Node head1, Node head2){
         Stack<Integer> s1 = new Stack<Integer>();
         Stack<Integer> s2 = new Stack<Integer>();
         while(head1!=null){
@@ -68,9 +87,7 @@ public class Client {
         Node node22 = new Node(3);
         node2.next=node22;
 
-        Node node = addList(node1,node2);
+        Node node = addList1(node1,node2);
         System.out.println(node);
-
-
     }
 }
