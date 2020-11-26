@@ -59,6 +59,17 @@ public class ReverseStackUsingRecursive {
         System.out.println("栈底元素="+result);
 
         System.out.println("--------------反转后--------------");
+        /**
+         * 栈中 数据 为
+         * -------
+         * 1     |
+         * 2     |
+         * 3     |
+         * 4     |
+         * 5     |
+         * 6     |
+         * -------
+         */
         reverse(test);
         System.out.println("--------------打印反转后链表--------------");
         while (!test.isEmpty()){
