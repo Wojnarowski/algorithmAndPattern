@@ -98,8 +98,6 @@ public class Client {
 
         head1=reverseList(head1);
         head2=reverseList(head2);
-
-
         return null;
     }
 
