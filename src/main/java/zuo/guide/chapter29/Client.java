@@ -127,6 +127,7 @@ public class Client {
         node2.next=node22;
 
         Node node = addList1(node1,node2);
+
         System.out.println(node);
     }
 }
