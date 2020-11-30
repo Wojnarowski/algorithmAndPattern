@@ -152,9 +152,7 @@ public class Client {
         Node node2 = new Node(6);
         Node node22 = new Node(3);
         node2.next=node22;
-
         Node node = addList1(node1,node2);
-
         System.out.println(node);
     }
 }
