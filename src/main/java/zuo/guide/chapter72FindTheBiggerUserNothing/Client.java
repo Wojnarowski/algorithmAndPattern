@@ -31,4 +31,33 @@ public class Client {
     public int flip(int n){
         return n ^ 1;
     }
+
+
+    /**
+     * 此方法有益出问题
+     * @param a
+     * @param b
+     * @return
+     */
+    public int getMax1(int a,int b){
+        int c =a - b;
+        int scA=sign(c);
+        int scB=flip(scA);
+        return a * scA + b * scB;
+    }
+
+    public int getMax2(int a , int b){
+        int c =a -b;
+        int sa = sign(a);
+        int sb = sign(b);
+        int sc = sign(c);
+        int difSab= sa ^ sb;
+        int sameSab=flip(difSab);
+        int returnA=difSab * sa + sameSab * sc;
+        int returnB=flip(returnA);
+        return  a * returnA + b * returnB;
+
+
+
+    }
 }
