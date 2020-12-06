@@ -56,8 +56,5 @@ public class Client {
         int returnA=difSab * sa + sameSab * sc;
         int returnB=flip(returnA);
         return  a * returnA + b * returnB;
-
-
-
     }
 }
