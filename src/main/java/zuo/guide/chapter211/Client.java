@@ -15,4 +15,8 @@ public class Client {
             this.value=data;
         }
     }
+
+    public Node reverseKNode1(Node head,int k){
+
+    }
 }
