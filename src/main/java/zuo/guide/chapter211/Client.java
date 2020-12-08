@@ -17,6 +17,9 @@ public class Client {
     }
 
     public Node reverseKNode1(Node head,int k){
+        if(k<2){
+            return head;
+        }
 
     }
 }
