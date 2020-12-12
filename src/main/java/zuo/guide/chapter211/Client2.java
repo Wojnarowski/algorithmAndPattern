@@ -21,8 +21,5 @@ public class Client2 {
         int x=getSumMax(i+1,j);
         int y=getSumMax(i+1,j+1);
         return Math.max(x,y)+inputData[i][j];
-
-
-
     }
 }
