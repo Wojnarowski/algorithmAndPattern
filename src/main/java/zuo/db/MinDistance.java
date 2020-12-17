@@ -17,4 +17,5 @@ package zuo.db;
  */
 public class MinDistance {
 
+
 }
