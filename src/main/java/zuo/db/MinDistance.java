@@ -13,6 +13,10 @@ package zuo.db;
  *      rorse->rose （删除r）
  *      rose->ros (删除e)
  *
+ *      参考链接
+ *      https://www.cnblogs.com/www-helloworld-com/p/10202923.html
+ *      https://www.cnblogs.com/happyfan/p/11674636.html
+ *
  *
  */
 public class MinDistance {
@@ -26,6 +30,34 @@ public class MinDistance {
         for(int row=0;row<length1+1;row++){
             dp[row][0]=row;
         }
+
+        //初始化第一行
+        for(int column=0;column<length2+1;column++){
+            dp[0][column]=column;
+        }
+
+        for(int row=1;row<length1+1;row++){
+            for(int column=1;column<length2+1;column++){
+                //如果字符相等直接取左上角的值
+                if(a.charAt(row-1)==b.charAt(column-1)){
+                    dp[row][column]=dp[row-1][column-1];
+                }else{
+                    //否则取左，上，左上 三个值的最小值 +1
+                    dp[row][column]=Math.min(
+                            dp[row-1][column-1],
+                            Math.min(dp[row][column-1],dp[row-1][column])
+                    ) + 1;
+                }
+            }
+        }
+        // 递推后，表格最右下方的值就是整个问题的最优解
+        return dp[length1][length2];
+    }
+
+    public static void main(String[] args) {
+        String a = "horse";
+        String b = "ros";
+        System.out.println("MinDsitance="+minDistance(a,b));
     }
 
 
