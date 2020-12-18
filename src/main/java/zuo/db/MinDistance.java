@@ -17,5 +17,16 @@ package zuo.db;
  */
 public class MinDistance {
 
+    public static int minDistance(String a,String b){
+        int length1=a.length();
+        int length2=b.length();
+        int [][] dp= new int[length1+1][length2+1];
+
+        //初始化第一列
+        for(int row=0;row<length1+1;row++){
+            dp[row][0]=row;
+        }
+    }
+
 
 }
