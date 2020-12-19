@@ -13,6 +13,7 @@ public class MaxSubArray {
             dp[i]=Math.max(dp[i-1],0)+nums[i];
             //最优解是最优子结构中的最大值
             ans=Math.max(ans,dp[i]);
+
         }
         return ans;
     }
