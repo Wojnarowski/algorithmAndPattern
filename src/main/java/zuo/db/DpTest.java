@@ -13,7 +13,7 @@ public class DpTest {
 
         //创建数组保存历史数据
         int[]dp=new int[n+1];
-        //给出初始值
+        //给出初始值 
         dp[0]=0;
         dp[1]=1;
 
