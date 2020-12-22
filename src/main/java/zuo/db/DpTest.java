@@ -13,9 +13,19 @@ public class DpTest {
 
         //创建数组保存历史数据
         int[]dp=new int[n+1];
-        //给出初始值 
+        //给出初始值
         dp[0]=0;
         dp[1]=1;
+        //通过关系式来计算dp[n]
+        for(int i=2;i<=n;i++){
+            dp[i]=dp[i-1]+dp[i-2];
+        }
+        //返回最终结果
+        return dp[n];
+
+    }
+
+    public static void main(String[] args) {
 
     }
 
