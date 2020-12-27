@@ -130,6 +130,14 @@ public class DpTest {
     public static void main(String[] args) {
         int result =f(3);
         System.out.println(result);
+
+        System.out.println("----uniquePaths-------");
+        int [][]arr = {
+                {1,3,1},
+                {1,5,1},
+                {4,2,1}
+                };
+        System.out.println(uniquePaths(arr));
     }
 
 }
