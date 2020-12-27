@@ -93,9 +93,36 @@ public class DpTest {
 
      dp[0] [j] = arr[0] [j] + dp[0] [j-1]; // 相当于最上面一行，机器人只能一直往左走
 
-     dp[i] [0] = arr[i] [0] + dp[i] [0];  // 相当于最左面一列，机器人只能一直往下走
+     dp[i] [0] = arr[i] [0] + dp[i-1] [0];  // 相当于最左面一列，机器人只能一直往下走
      * @param args
      */
+    public static int uniquePaths(int [][] arr){
+        int m = arr.length;
+        int n=arr[0].length;
+        if(m<=0 || n<=0){
+            return 0;
+        }
+
+        int[][]dp=new int[m][n];
+        //初始化
+        dp[0][0]=arr[0][0];
+        //初始化最左边的列
+        for(int i=1;i<m;i++){
+            dp[i][0]=dp[i-1][0]+arr[i][0];
+        }
+        //初始化最上面的行
+        for(int j=1;j<n;j++){
+           dp[0][j]=dp[0][j-1]+arr[0][j];
+        }
+
+        //推导 dp[m-1][n-1]
+        for(int i=1;i<m;i++){
+            for(int j=1;j<n;j++){
+                dp[i][j]=Math.min(dp[i-1][j],dp[i][j-1])+arr[i][j];
+            }
+        }
+        return dp[m-1][n-1];
+    }
 
 
 
