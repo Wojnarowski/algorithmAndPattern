@@ -1,5 +1,7 @@
 package zuo.db;
 
+import java.util.Arrays;
+
 /**
  * 参考链接  https://blog.csdn.net/qq_43648470/article/details/111414142
  * 背包问题
@@ -64,9 +66,10 @@ public class Bag {
         System.out.println(dp[n][maxWeight]);
         System.out.println("-----------");
         int[] dp2 =bag02(4,8,weights,values);
-        for(int intValue:dp2){
-            System.out.println(intValue);
-        }
+//        for(int intValue:dp2){
+//            System.out.println(intValue);
+//        }
+        System.out.println(Arrays.toString(dp2));
     }
 
 
