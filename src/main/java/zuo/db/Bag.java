@@ -31,6 +31,29 @@ public class Bag {
         return dp;
     }
 
+
+    /**
+     * 一维数组
+     * @param n
+     * @param maxWeight
+     * @param weights
+     * @param values
+     * @return
+     */
+    public static  int[] bag02(int n,int maxWeight,int [] weights,int [] values){
+        int []dp = new int[maxWeight+1];
+        for(int i=1;i<=n;i++){
+            int w=weights[i-1];
+            int v=values[i-1];
+            for(int j=maxWeight;j>=1;j--){
+                if(j>=w){
+                    dp[j]=Math.max(dp[j],dp[j-w]+v);
+                }
+            }
+        }
+        return dp;
+    }
+
     public static void main(String[] args) {
         int n=4;
         int maxWeight=8;
@@ -39,6 +62,11 @@ public class Bag {
 
         int [][]dp=bag01(4,8,weights,values);
         System.out.println(dp[n][maxWeight]);
+        System.out.println("-----------");
+        int[] dp2 =bag02(4,8,weights,values);
+        for(int intValue:dp2){
+            System.out.println(intValue);
+        }
     }
 
 
