@@ -46,7 +46,9 @@ public class Solution978 {
             return 0;
         }
         int [][] dp = new int [arr.length+1][arr.length+1];
+        for(int i=1;i<i;){
 
+        }
 
     }
 }
