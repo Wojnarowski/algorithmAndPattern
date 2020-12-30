@@ -40,4 +40,13 @@ public class Solution978 {
     public static void main(String[] args) {
         
     }
+
+    public static int maxTurbulenceSize(int [] arr){
+        if(arr==null || arr.length==0){
+            return 0;
+        }
+        int [][] dp = new int [arr.length+1][arr.length+1];
+
+
+    }
 }
