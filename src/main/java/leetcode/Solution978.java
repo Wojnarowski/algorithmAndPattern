@@ -45,8 +45,10 @@ public class Solution978 {
         if(arr==null || arr.length==0){
             return 0;
         }
-        int [][] dp = new int [arr.length+1][arr.length+1];
-        for(int i=1;i<i;){
+        //当长度为 i 时 湍流子数组长度
+        int n = arr.length;
+        int [] dp = new int [n];
+        for(int i=1;i<;){
 
         }
 
