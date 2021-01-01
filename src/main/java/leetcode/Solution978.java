@@ -47,9 +47,12 @@ public class Solution978 {
         }
         //当长度为 i 时 湍流子数组长度
         int n = arr.length;
-        int [] dp = new int [n];
-        for(int i=1;i<;){
+        int [] dp = new int [n+1];
+        for(int i=1;i<n;i++){
+            for(int j=0;j<i;j++){
 
+
+            }
         }
 
     }
