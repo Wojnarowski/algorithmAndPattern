@@ -11,7 +11,6 @@ package leetcode.dp;
  如果一个字符序列与它反转后的字符序列一致，那么它是回文字符序列。
 
  如果对于某个  i，A_i != B_i，那么 A_1, A_2, ... 和 B_1, B_2, ... 这两个字符序列是不同的。
-
   
 
  示例 1：
@@ -23,7 +22,6 @@ package leetcode.dp;
  注意：'bcb' 虽然出现两次但仅计数一次。
 
 
-
  示例 2：
  输入：
  S = 'abcdabcdabcdabcdabcdabcdabcdabcddcbadcbadcbadcbadcbadcbadcbadcba'
@@ -33,7 +31,6 @@ package leetcode.dp;
   
 
  提示：
-
  字符串 S 的长度将在[1, 1000]范围内。
  每个字符 S[i] 将会是集合 {'a', 'b', 'c', 'd'} 中的某一个。
 
