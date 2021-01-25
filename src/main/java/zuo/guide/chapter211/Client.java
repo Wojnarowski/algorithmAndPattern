@@ -21,10 +21,10 @@ public class Client {
         nodePart2.setNext(nodePart3);
         nodePart3.setNext(nodePart4);
         nodePart4.setNext(nodePart5);
-        printNode(nodePart1);
+        System.out.println(nodePart1.toString());
         System.out.println("------------------");
         Node node = reverseKNode1(nodePart1,2);
-        printNode(node);
+        System.out.println(node.toString());
     }
 
 
@@ -37,6 +37,14 @@ public class Client {
 
         public void setNext(Node next) {
             this.next = next;
+        }
+
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "value=" + value +
+                    ", next=" + next +
+                    '}';
         }
     }
 
@@ -76,10 +84,4 @@ public class Client {
         return cur;
     }
 
-    public static void printNode(Node node){
-        while(node != null){
-            System.out.println(node.value);
-            node=node.next;
-        }
-    }
 }
