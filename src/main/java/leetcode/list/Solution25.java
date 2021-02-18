@@ -25,7 +25,7 @@ import java.util.Stack;
 
 public class Solution25 {
 
-    public ListNode reverseKGroup(ListNode head, int k) {
+    public static ListNode reverseKGroup(ListNode head, int k) {
         if(k<2){
             return head;
         }
@@ -36,22 +36,53 @@ public class Solution25 {
         ListNode pre=hair;
         ListNode end=hair;
 
+        while(end.next!=null){
+            for(int i=0;i<k&&end!=null;i++){
+                end=end.next;
+            }
+            if(end == null){
+                break;
+            }
+            ListNode start = pre.next;
+            ListNode next = end.next;
+            end.next=null;
+            pre.next=reverse(start);
+            start.next=next;
+            pre=start;
+            end =pre;
+        }
+        return hair.next;
 
+    }
 
-
+    public static ListNode reverse(ListNode head){
+        ListNode pre =null;
+        ListNode cur = head;
+        while(cur!=null){
+            ListNode next = cur.next;
+            cur.next=pre;
+            pre=cur;
+            cur=next;
+        }
+        return pre;
     }
 
 
 
     public static void main(String[] args) {
 
-        ListNode listNode11 = new ListNode(2);
-        ListNode listNode12 = new ListNode(4);
+        ListNode listNode11 = new ListNode(1);
+        ListNode listNode12 = new ListNode(2);
         ListNode listNode13 = new ListNode(3);
+        ListNode listNode14 = new ListNode(4);
+        ListNode listNode15 = new ListNode(5);
         listNode11.next=listNode12;
         listNode12.next=listNode13;
+        listNode13.next=listNode14;
+        listNode14.next=listNode15;
 
-
+        ListNode result = reverseKGroup(listNode11,2);
+        System.out.println(result);
 
     }
 }
