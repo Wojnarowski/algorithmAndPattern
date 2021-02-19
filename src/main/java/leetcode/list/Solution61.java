@@ -30,27 +30,65 @@ package leetcode.list;
 public class Solution61 {
 
 
+    /**
+     * 这种方法头节点丢了
+     * @param head
+     * @param k
+     * @return
+     */
+//    public static ListNode rotateRight(ListNode head, int k) {
+//        if(head==null || k<1){
+//            return head;
+//        }
+//        ListNode pre = head;
+//        ListNode last=head;
+//        while (head.next.next !=null){
+//            head=head.next;
+//        }
+//        pre=head;
+//        last=head.next;
+//        head.next=null;
+//        last.next=pre;
+//        return last;
+//    }
 
-    public static ListNode rotateRight(ListNode head, int k) {
-        if(head==null || k<1){
+    /**
+     * 思路
+     * 1.先形成环
+     * 2.尾节点移动 length - k 步  （右移k步 == 左移 length - k 步）
+     * 3.找到头节点，断开首位连接
+     * @param head
+     * @param k
+     * @return
+     */
+    public static ListNode rotateRight2(ListNode head, int k) {
+        if(head==null || head.next==null){
             return head;
         }
-        ListNode pre = head;
-        ListNode last=head;
-        while (head.next.next !=null){
-            head=head.next;
+        //1.先找尾节点形成环
+        ListNode tail = head;
+        int length=1;
+        while(tail.next!=null){
+            tail=tail.next;
+            length++;
         }
-        pre=head;
-        last=head.next;
-        head.next=null;
-        last.next=pre;
-        return last;
+        tail.next=head;
+        //2.尾节点移动length-k步
+        k=k%length;
+        for(int i=0;i<length-k;i++){
+            tail=tail.next;
+        }
+        //3.找到头结点,断链
+        head=tail.next;
+        tail.next=null;
+        return head;
     }
 
 
 
     public static void main(String[] args) {
-        System.out.println(rotateRight(ListNode.getListHeader(),2));
+        System.out.println(ListNode.getListHeader().toString());
+        System.out.println(rotateRight2(ListNode.getListHeader(),3));
 
 
     }
