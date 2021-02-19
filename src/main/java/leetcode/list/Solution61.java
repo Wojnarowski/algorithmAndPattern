@@ -58,7 +58,7 @@ public class Solution61 {
      * 2.尾节点移动 length - k 步  （右移k步 == 左移 length - k 步）
      * 3.找到头节点，断开首位连接
      * @param head
-     * @param kz
+     * @param k
      * @return
      */
     public static ListNode rotateRight2(ListNode head, int k) {
