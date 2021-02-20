@@ -55,16 +55,33 @@ public class Solution1004 {
 //        return ans;
 //    }
 
-    public static int longestOnes2(int[] A, int K) {
+    public static int longestOnes2(int[] A, int k) {
        int max=0;
        for(int left=0,right=0;right<A.length;right++){
-
+            //如果右指针为0
+           if(A[right]==0){
+                //还有没有剩余的0可以减
+               if(k==0){
+                    while (A[left] == 1){
+                        left++;
+                    }
+                    left++;
+               }
+               else{
+                k--;
+               }
+           }
+           else{
+               //右边界扩大继续循环
+               max = Math.max(max,right-left+1);
+           }
+           max = Math.max(max,right-left+1);
        }
         return max;
     }
 
     public static void main(String[] args) {
-        int [] a = new int[]{1,0,0,1,1,1,0,0,1,1,0,0,0,0,0};
+        int [] a = new int[]{0,0,0,1,1,1,0,0,1,1,0,0,0,0,0};
         System.out.println(longestOnes2(a,2));
     }
 }
