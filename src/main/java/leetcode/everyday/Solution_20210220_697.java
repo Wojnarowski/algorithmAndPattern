@@ -1,5 +1,8 @@
 package leetcode.everyday;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *给定一个非空且只包含非负数的整数数组 nums，数组的度的定义是指数组里任一元素出现频数的最大值。
  *
@@ -36,16 +39,53 @@ package leetcode.everyday;
 public class Solution_20210220_697 {
 
     /**
-     * 思路 1.利用hash key 为值  value 为次数
+     * 思路 1.利用hash key 为值  value 为次数  找出度
+     *      2.利用滑动窗口找到 长度为degree的数组
      * @param nums
      * @return
      */
     public static int findShortestSubArray1(int[] nums) {
+        if(nums ==null || nums.length<=0){
+            return 0;
+        }
 
-        return 0;
+        //存放 值 - 次数
+        Map<Integer ,Integer> counter = new HashMap<Integer ,Integer>();
+        int degree =0;
+        for(int i=0;i<nums.length;i++){
+            if(counter.get(nums[i])!=null){
+                counter.put(nums[i],counter.get(nums[i])+1);
+                degree=Math.max(degree,counter.get(nums[i]));
+            }
+            else{
+                counter.put(nums[i],1);
+                degree=Math.max(degree,1);
+            }
+        }
+        System.out.println("--------degree="+degree);
+        //2.利用窗口找数组
+        int left=0,right=0,length=nums.length;
+        int res=length;
+        Map<Integer ,Integer> slipWindowUse = new HashMap<Integer ,Integer>();
+
+        while (right<length){
+            slipWindowUse.put(nums[right],slipWindowUse.getOrDefault(nums[right],0)+1);
+            right++;
+            while(slipWindowUse.get(nums[right-1])==degree){
+                slipWindowUse.put(nums[left], slipWindowUse.get(nums[left]) - 1);
+                res = Math.min(res, right - left);
+                left++;
+            }
+        }
+
+        return res;
     }
     public static void main(String[] args) {
-        int [] a = new int[]{0,0,0,1,1,1,0,0,1,1,0,0,0,0,0};
-        System.out.println(findShortestSubArray1(a));
+        int [] a = new int[]{1, 2, 2, 3, 1};
+        int [] a1 = new int[]{1, 2};
+        int [] a2 = new int[]{1};
+        int [] a3 = new int[]{1, 2, 3, 2, 1};
+
+        System.out.println(findShortestSubArray1(a3));
     }
 }
