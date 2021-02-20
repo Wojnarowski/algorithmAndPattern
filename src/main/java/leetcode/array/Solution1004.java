@@ -71,12 +71,28 @@ public class Solution1004 {
                 k--;
                }
            }
-           else{
-               //右边界扩大继续循环
-               max = Math.max(max,right-left+1);
-           }
+//           else{
+//               //右边界扩大继续循环
+//               max = Math.max(max,right-left+1);
+//           }
            max = Math.max(max,right-left+1);
        }
+        return max;
+    }
+
+    public static int longestOnes3(int[] A, int K) {
+        int max=0;int left =0;
+        for(int right=0;right<A.length;right++){
+            if(A[right]==0){
+                K--;
+            }
+            while (K<0){
+                if(A[left++]==0){
+                    K++;
+                }
+            }
+            max=Math.max(max,right-left+1);
+        }
         return max;
     }
 
