@@ -98,6 +98,6 @@ public class Solution1004 {
 
     public static void main(String[] args) {
         int [] a = new int[]{0,0,0,1,1,1,0,0,1,1,0,0,0,0,0};
-        System.out.println(longestOnes2(a,2));
+        System.out.println(longestOnes3(a,1));
     }
 }
