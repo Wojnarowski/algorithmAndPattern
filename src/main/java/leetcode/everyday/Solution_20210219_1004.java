@@ -1,4 +1,4 @@
-package leetcode.array;
+package leetcode.everyday;
 
 import leetcode.list.ListNode;
 
@@ -37,7 +37,7 @@ import java.util.Stack;
  */
 
 
-public class Solution1004 {
+public class Solution_20210219_1004 {
 
 //    public static int longestOnes(int[] A, int K) {
 //        int cnt=0;
