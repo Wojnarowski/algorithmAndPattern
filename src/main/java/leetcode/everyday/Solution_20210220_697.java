@@ -85,6 +85,7 @@ public class Solution_20210220_697 {
         int [] a1 = new int[]{1, 2};
         int [] a2 = new int[]{1};
         int [] a3 = new int[]{1, 2, 3, 2, 1};
+        int [] a4 = new int[]{1, 2, 3, 2, 4,5,6,7,8};
 
         System.out.println(findShortestSubArray1(a3));
     }
