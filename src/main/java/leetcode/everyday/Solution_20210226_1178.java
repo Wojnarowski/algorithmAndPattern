@@ -1,6 +1,7 @@
 package leetcode.everyday;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static leetcode.everyday.Solution_20210225_867.transpose;
@@ -90,12 +91,89 @@ public class Solution_20210226_1178 {
         return true;
     }
 
+
+    /**
+     * 利用字典树
+     * @param words
+     * @param puzzles
+     * @return
+     */
+    public static List<Integer> findNumOfValidWords2(String[] words, String[] puzzles) {
+        TrieNode root = new TrieNode();
+        //将word中字母按照字典排序并去重
+        for(String word:words){
+            char[] charArray = word.toCharArray();
+            Arrays.sort(charArray);
+            StringBuilder stringBuilder = new StringBuilder();
+            for(int i=0;i<charArray.length;i++){
+                if(i==0 || charArray[i]!=charArray[i-1]){
+                    stringBuilder.append(charArray[i]);
+                }
+            }
+            //加入到字典树种
+            add(root,stringBuilder.toString());
+        }
+
+        List<Integer> ans = new ArrayList<Integer>();
+        for (String puzzle : puzzles) {
+            char required=puzzle.charAt(0);
+            char[]arr=puzzle.toCharArray();
+            Arrays.sort(arr);
+            ans.add(find(new String(arr),required,root,0));
+        }
+        return ans;
+    }
+
+    private static Integer find(String puzzle, char required, TrieNode cur, int pos) {
+        // 搜索到空节点，不合法，返回 0
+        if (cur == null) {
+            return 0;
+        }
+        // 整个 puzzle 搜索完毕，返回谜底的数量
+        if (pos == 7) {
+            return cur.frequency;
+        }
+
+        // 选择第 pos 个字母
+        int ret = find(puzzle, required, cur.child[puzzle.charAt(pos) - 'a'], pos + 1);
+
+        // 当 puzzle.charAt(pos) 不为首字母时，可以不选择第 pos 个字母
+        if (puzzle.charAt(pos) != required) {
+            ret += find(puzzle, required, cur, pos + 1);
+        }
+
+        return ret;
+
+    }
+
+    private static void add(TrieNode root, String word) {
+        TrieNode cur = root;
+        for(int i=0;i<word.length();i++){
+            char ch = word.charAt(i);
+            if(cur.child[ch-'a']==null){
+                cur.child[ch-'a'] =new TrieNode();
+            }
+            cur=cur.child[ch-'a'];
+        }
+        ++cur.frequency;
+    }
+
+    static class TrieNode{
+        int frequency;
+        TrieNode[] child;
+
+        public TrieNode(){
+            frequency=0;
+            child=new TrieNode[26];
+        }
+    }
+
     public static void main(String[] args) {
         String[] words = new String[]{"aaaa","asas","able","ability","actt","actor","access"};
         String[] puzzles  = new String[]{"aboveyz","abrodyz","abslute","absoryz","actresz","gaswxyz"};
 
         System.out.println("-------------开始执行-------------");
-        List<Integer> result = findNumOfValidWords1(words,puzzles);
+        List<Integer> result = findNumOfValidWords2(words,puzzles);
         System.out.println(result);
         System.out.println("-------------运行通过-------------");
 
