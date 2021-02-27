@@ -44,6 +44,7 @@ public class Solution_20210227_395 {
      */
     public static int longestSubstring1(String s, int k) {
         if(s.length()<k){
+
             return 0;
         }
         HashMap<Character, Integer> counter= new HashMap<Character, Integer>();
