@@ -90,14 +90,9 @@ public class Solution_20210228_896 {
         int A3[]=new int[]{1,3,2};
         int A4[]=new int[]{1,2,4,5};
         int A5[]=new int[]{1,1,1};
-
-
-
-
         System.out.println("-------------开始执行-------------");
         boolean result = isMonotonic1(A5);
         System.out.println(result);
         System.out.println("-------------运行通过-------------");
-
     }
 }
