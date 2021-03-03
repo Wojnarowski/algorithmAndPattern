@@ -15,4 +15,12 @@ public class AlgorithmUtil {
         }
         System.out.println("-----------------------------");
     }
+
+    public static void sysoutArray(int[] array) {
+        System.out.println("-----------------------------");
+        for(int i=0;i<array.length;i++){
+            System.out.println(array[i]+"\t");
+        }
+        System.out.println("-----------------------------");
+    }
 }
