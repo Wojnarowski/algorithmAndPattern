@@ -43,7 +43,7 @@ public class Solution_20210307_77 {
             ans.add(new ArrayList<Integer>(path));
             return;
         }
-        for(int i=start;i<=n-k+1;i++){
+        for(int i=start;i<=n;i++){
             path.add(i);
             backTrack(n,k-1,i+1,path,ans);
             path.removeLast();
