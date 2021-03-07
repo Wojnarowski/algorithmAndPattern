@@ -24,7 +24,7 @@ public class Solution_20210306_503 {
 
 
 
-    public int[] nextGreaterElements(int[] nums) {
+    public static int[] nextGreaterElements(int[] nums) {
         int length = nums.length;
         int res[] = new int[length];
         Arrays.fill(res, -1);//默认都为-1
@@ -50,5 +50,8 @@ public class Solution_20210306_503 {
     }
 
     public static void main(String[] args) {
+        int [] array = new int[]{1,2,1};
+        int [] result =nextGreaterElements(array);
+        System.out.println(Arrays.toString(result));
     }
 }
