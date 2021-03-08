@@ -41,45 +41,34 @@ public class Solution_20210308_132 {
             return 0;
         }
         int n=s.length();
-        char[] charArray = s.toCharArray();
+        char[] charArray  = s.toCharArray();
         //动态转移方程
-        boolean[][] g = new boolean[n][n];
-        //填充i到j之间
+        boolean[][] isPalindrome  = new boolean[n][n];
+        //组建i到j之间回文串的动态转移方程
+        for(int right=0;right<n;right++){
+            for(int left=0;left<=right;left++){
+                if(charArray[left]==charArray[right] && ((right-left<=2) || isPalindrome[left+1][right-1])){
+                    isPalindrome[left][right]=true;
+                }
+            }
+        }
+        //前n项分割次数动态转移方程
+        int[] dp = new int[n];
+        Arrays.fill(dp,0);
         for(int i=0;i<n;i++){
-            Arrays.fill(g[i],true);
-        }
-        for(int i=n-1;i>=0;i--){
-            for(int j=i+1;j<n;j++){
-                g[i][j] = s.charAt(i) == s.charAt(j) && g[i + 1][j - 1];
+            if(isPalindrome[0][i]){
+                dp[i]=0;
+                continue;
             }
-        }
-
-        System.out.println("----------动态方程组建完毕-----------");
-        for(int i=0;i<g.length;i++){
-            for(int j=0;j<g[0].length;j++){
-                System.out.print(g[i][j]);
-                System.out.print(" ");
-            }
-            System.out.println();
-        }
-        System.out.println("----------动态方程组建完毕-----------");
-        int[] f = new int[n];
-        Arrays.fill(f, Integer.MAX_VALUE);
-        for (int i = 0; i < n; ++i) {
-            if (g[0][i]) {
-                f[i] = 0;
-            } else {
-                for (int j = 0; j < i; ++j) {
-                    if (g[j + 1][i]) {
-                        f[i] = Math.min(f[i], f[j] + 1);
-                    }
+            for(int j=0;j<i;j++){
+                //前项
+                if(isPalindrome[j+1][i]){
+                    dp[i]=Math.max(dp[i],dp[j]+1);
                 }
             }
         }
 
-        return f[n - 1];
-
-
+        return dp[n-1];
     }
 
     public static void main(String[] args) {
