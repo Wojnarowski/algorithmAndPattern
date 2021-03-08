@@ -54,7 +54,7 @@ public class Solution_20210308_132 {
         }
         //前n项分割次数动态转移方程
         int[] dp = new int[n];
-        Arrays.fill(dp,0);
+        Arrays.fill(dp,n);
         for(int i=0;i<n;i++){
             if(isPalindrome[0][i]){
                 dp[i]=0;
@@ -63,7 +63,7 @@ public class Solution_20210308_132 {
             for(int j=0;j<i;j++){
                 //前项
                 if(isPalindrome[j+1][i]){
-                    dp[i]=Math.max(dp[i],dp[j]+1);
+                    dp[i]=Math.min(dp[i],dp[j]+1);
                 }
             }
         }
@@ -75,10 +75,12 @@ public class Solution_20210308_132 {
         String str1="aab";
         String str2="a";
         String str3="ab";
+        String str4="cdd";
         System.out.println("-------------开始执行-------------");
         Assert.isTrue(minCut(str1)==1,"程序异常");
         Assert.isTrue(minCut(str2)==0,"程序异常");
         Assert.isTrue(minCut(str3)==1,"程序异常");
+        Assert.isTrue(minCut(str4)==1,"程序异常");
         System.out.println("-------------运行通过-------------");
 
     }
