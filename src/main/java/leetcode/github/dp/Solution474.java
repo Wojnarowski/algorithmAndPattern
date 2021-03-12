@@ -1,4 +1,4 @@
-package leetcode.dp;
+package leetcode.github.dp;
 
 /**
  * 给你一个二进制字符串数组 strs 和两个整数 m 和 n 。

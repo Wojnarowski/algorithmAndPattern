@@ -1,4 +1,4 @@
-package leetcode.dp;
+package leetcode.github.dp;
 
 /**
  * 统计不同回文子序列

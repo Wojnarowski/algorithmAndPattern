@@ -1,4 +1,4 @@
-package leetcode.slidwindow;
+package leetcode.github.slidwindow;
 
 import org.springframework.util.Assert;
 

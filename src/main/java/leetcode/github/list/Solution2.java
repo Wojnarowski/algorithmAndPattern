@@ -1,7 +1,4 @@
-package leetcode.list;
-
-import java.util.HashMap;
-import java.util.Map;
+package leetcode.github.list;
 
 /**
  *

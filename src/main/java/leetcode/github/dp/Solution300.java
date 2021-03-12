@@ -1,4 +1,4 @@
-package leetcode.dp;
+package leetcode.github.dp;
 
 /**
  *  * 最长递增子序列
