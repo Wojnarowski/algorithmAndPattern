@@ -35,13 +35,16 @@ public class LockDemo {
         for (int j = 0; j < 100; j++) {
 
             new Thread(new Runnable() {
+
                 public void run() {
                     for (int i = 0; i < 5; i++) {
                         ot.sub();
                     }
                 }
             }).start();
+
             new Thread(new Runnable() {
+
                 public void run() {
                     for (int i = 0; i < 5; i++) {
                         ot.main();
@@ -49,6 +52,7 @@ public class LockDemo {
                 }
             }).start();
         }
+
     }
 }
 
