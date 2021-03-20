@@ -1,5 +1,7 @@
 package leetcode.github.slidwindow;
 
+import org.springframework.util.Assert;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,26 +36,37 @@ public class Solution16 {
      * @param target
      * @return
      */
-    public int threeSumClosest(int[] nums, int target) {
+    public static int threeSumClosest(int[] nums, int target) {
         if(nums==null || nums.length==0){
             return 0;
         }
         Arrays.sort(nums);
-        int result = nums[0] + nums[1] + nums[2];
-        for(int i=0;i<nums.length-2;i++){
-            int left=i+1;
-            //int ri
+        int ans = nums[0] + nums[1] + nums[2];
+        for(int i=0;i<nums.length;i++){
+            int start =i+1,end =nums.length-1;
+            while(start <end){
+                int sum = nums[start] +nums[end]+nums[i];
+                if(Math.abs(sum-target)<Math.abs(ans-target)){
+                    ans=sum;
+                }
+                if(sum>target){
+                    end--;
+                }
+                else if(sum<target){
+                    start++;
+                }
+                else{
+                    return ans;
+                }
+            }
+
         }
-
-
-        return 0;
+        return ans;
     }
 
     public static void main(String[] args) {
         System.out.println("-------------开始执行-------------");
-        //Assert.isTrue(maxArea(new int[]{1,2,1})==2,"程序异常");
-        //List<List<Integer>> list = threeSum(new int []{-1,0,1,2,-1,-4});
-
+        Assert.isTrue(threeSumClosest(new int[]{-1,2,1,-4},1)==2,"程序异常");
         System.out.println("-------------运行通过-------------");
     }
 }
