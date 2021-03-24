@@ -43,12 +43,18 @@ public class Solution202 {
         return total;
     }
 
+    /**
+     * 思路一： 超时
+     * 快慢指针判断环
+     * @param n
+     * @return
+     */
     public static boolean isHappy(int n) {
         int slow =n;
         int fast = getNext(n);
         while(fast !=1 && slow!=fast){
-            slow=getNext(n);
-            fast=getNext(getNext(n));
+            slow=getNext(slow);
+            fast=getNext(getNext(fast));
         }
         return fast==1;
     }
