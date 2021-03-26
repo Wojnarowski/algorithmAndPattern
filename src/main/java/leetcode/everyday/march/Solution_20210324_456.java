@@ -1,5 +1,7 @@
 package leetcode.everyday.march;
 
+import org.springframework.util.Assert;
+
 import java.util.*;
 
 /**
@@ -34,12 +36,12 @@ import java.util.*;
  */
 public class Solution_20210324_456 {
 
-    public boolean find132pattern(int[] nums) {
+    public  static  boolean find132pattern(int[] nums) {
         int n=nums.length;
         int [] min =new int [n];
         // 第一个位置的最小数肯定就是它自己了
         min[0]=nums[0];
-        // 将前一个位置的最小数和当前位置的数比较，找到当前位置的最小数
+        // 将前一个位置的最小数和当前位置8的数比较，找到当前位置的最小数
         for(int i=1;i<n;i++){
             min[i] = Math.min(min[i - 1], nums[i]);
         }
@@ -48,9 +50,13 @@ public class Solution_20210324_456 {
         for (int i = n - 1; i >= 0; --i) {
             if (nums[i] > min[i]) {
                 // 如果栈中的数字比 min[i] 还小或者相同，那么说明不可能是 ak，就弹出来
-                while (!stack.isEmpty() && stack.peek() <= min[i]) stack.pop();
+                while (!stack.isEmpty() && stack.peek() <= min[i]){
+                    stack.pop();
+                }
                 // 检查一下栈顶元素是不是满足 ai<stack.peek()<aj，如果满足就说明找到了
-                if (!stack.isEmpty() && stack.peek() < nums[i]) return true;
+                if (!stack.isEmpty() && stack.peek() < nums[i]) {
+                    return true;
+                }
                 // 不管怎样都要push进来当前的数，因为当前的数满足了大于 min[i]
                 stack.push(nums[i]);
             }
@@ -61,7 +67,9 @@ public class Solution_20210324_456 {
 
     public static void main(String[] args) {
         System.out.println("-------------开始执行-------------");
-        //Assert.isTrue(evalRPN(new String[]{"10","6","9","3","+","-11","*","/","*","17","+","5","+"})==22,"程序异常");
+        //Assert.isTrue(find132pattern(new int[]{1,2,3,4})==true,"程序异常");
+        Assert.isTrue(find132pattern(new int[]{1,2,4,3})==true,"程序异常");
+
         System.out.println("-------------运行通过-------------");
     }
 }
