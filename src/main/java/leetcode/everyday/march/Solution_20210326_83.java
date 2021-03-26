@@ -36,8 +36,8 @@ public class Solution_20210326_83 {
 
     public static ListNode deleteDuplicates(ListNode head) {
 
-        if(head.next==null){
-            return head;
+        if(head==null){
+            return null;
         }
 
         ListNode dummy = new ListNode(-1);
@@ -45,7 +45,7 @@ public class Solution_20210326_83 {
         dummy.next=head;
 
         ListNode cur=head;
-        while(cur.next!=null){
+        while(cur!=null &&cur.next!=null){
            int x = cur.val;
            if(x ==cur.next.val){
                cur.next=cur.next.next;
