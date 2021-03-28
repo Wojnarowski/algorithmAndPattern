@@ -1,5 +1,7 @@
 package leetcode.everyday.march;
 
+import leetcode.everyday.ListNode;
+
 /**
  *
  * q_83  删除排序链表中的重复元素

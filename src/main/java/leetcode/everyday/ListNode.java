@@ -1,4 +1,4 @@
-package leetcode.everyday.march;
+package leetcode.everyday;
 
 /**
  * @ClassName ListNode
