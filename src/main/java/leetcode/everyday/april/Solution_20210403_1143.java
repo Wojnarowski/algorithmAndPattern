@@ -71,6 +71,7 @@ public class Solution_20210403_1143 {
                 char ch2 = text2.charAt(col-1);
                 if(ch1==ch2){
                     dp[row][col]=dp[row-1][col-1]+1;
+
                 }else{
                      dp[row][col] = Math.max(dp[row-1][col],dp[row][col-1]);
                 }
