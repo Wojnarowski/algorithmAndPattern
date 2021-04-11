@@ -1,5 +1,9 @@
 package leetcode.github.slidwindow;
 
+import org.springframework.util.Assert;
+
+import java.util.Stack;
+
 /**
  *q_42 接雨水
  * 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，
@@ -100,9 +104,43 @@ public class Solution42 {
     }
 
 
+    /**
+     * 单调栈
+     * @param height
+     * @return
+     */
+    public static int trap2(int[] height) {
+
+        if(height==null){
+            return 0;
+        }
+        //存下标
+        Stack<Integer> stack = new Stack<Integer>();
+        int ans =0;
+        for(int i=0;i<height.length;i++){
+            while(!stack.isEmpty()&&height[stack.peek()]<height[i]){
+                int curIdx = stack.pop();
+                //如果栈顶元素一直相等，那么全都pop出去，只留第一个。
+                while (!stack.isEmpty() && height[stack.peek()] == height[curIdx]) {
+                    stack.pop();
+                }
+                if (!stack.isEmpty()) {
+                    int stackTop = stack.peek();
+                    int weight=i-stackTop-1;
+                    int high=Math.min(height[i],height[stackTop])-height[curIdx];
+                    ans+=weight*high;
+                }
+
+            }
+            stack.add(i);
+        }
+        return ans;
+    }
+
+
     public static void main(String[] args) {
         System.out.println("-------------开始执行-------------");
-        //Assert.isTrue(removeDuplicates(new int[]{-1,2,1,-4},1)==2,"程序异常");
+        Assert.isTrue(trap2(new int[]{0,1,0,2,1,0,1,3,2,1,2,1})==6,"程序异常");
         System.out.println("-------------运行通过-------------");
     }
 }

@@ -1,70 +1,114 @@
 package leetcode.github.monotonousStack;
 
+import org.springframework.util.Assert;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * q402  移掉K位数字
+ * 柱状图中最大的矩形
+ *给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。
  *
- * 给定一个以字符串表示的非负整数 num，移除这个数中的 k 位数字，使得剩下的数字最小。
+ * 求在该柱状图中，能够勾勒出来的矩形的最大面积。
  *
- * 注意:
- *
- * num 的长度小于 10002 且 ≥ k。
- * num 不会包含任何前导零。
- *
- * 示例 1 :
- * 输入: num = "1432219", k = 3
- * 输出: "1219"
- * 解释: 移除掉三个数字 4, 3, 和 2 形成一个新的最小的数字 1219。
- *
- *
- * 示例 2 :
- * 输入: num = "10200", k = 1
- * 输出: "200"
- * 解释: 移掉首位的 1 剩下的数字为 200. 注意输出不能有任何前导零。
+ *  
  *
  *
  *
- * 示例 3 :
- * 输入: num = "10", k = 2
- * 输出: "0"
- * 解释: 从原数字移除所有的数字，剩余为空就是0。
+ * 以上是柱状图的示例，其中每个柱子的宽度为 1，给定的高度为 [2,1,5,6,2,3]。
  *
- * 来源：力扣（LeetCode）
- * 链接：https://leetcode-cn.com/problems/remove-k-digits
- * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ *  
+ *
+ *
+ *
+ * 图中阴影部分为所能勾勒出的最大矩形面积，其面积为 10 个单位。
+ *
+ *  
+ *
+ * 示例:
+ *
+ * 输入: [2,1,5,6,2,3]
+ * 输出: 10
+ *
  *
  */
 public class Solution402 {
 
-    public static String removeKdigits(String num, int k) {
-        Deque<Character> statck = new ArrayDeque<Character>(num.length());
-        for(char c:num.toCharArray()){
-            while(k>0 && !statck.isEmpty() &&c<statck.peek()){
-                statck.pop();
-                k--;
-            }
-            if(c!='0' || !statck.isEmpty()){
-                statck.push(c);
-            }
+    public static int largestRectangleArea(int[] heights) {
+        //特判
+        int len = heights.length;
+        if (len == 0) {
+            return 0;
         }
-        while (k>0 && !statck.isEmpty()){
-            statck.pop();
-            k--;
+        if (len == 1) {
+            return heights[0];
         }
 
-        StringBuilder stringBuilder = new StringBuilder();
-        while (!statck.isEmpty()){
-            stringBuilder.append(statck.pollLast());
+        //单调栈 数组下标
+        Deque<Integer> stack = new ArrayDeque<Integer>();
+        int res=0;
+        for(int i=0;i<heights.length;i++){
+            while(!stack.isEmpty()&&heights[stack.peek()]>heights[i]){
+                int curHeight  = heights[stack.pollLast()];
+                while(!stack.isEmpty() && heights[stack.peekLast()]==curHeight){
+                    stack.pollLast();
+                }
+                int cutWidth=0;
+                if(stack.isEmpty()){
+                    cutWidth=i;
+                }
+                else{
+                    cutWidth=i-stack.peekLast()-1;
+                }
+                res=Math.max(res,curHeight*cutWidth);
+            }
+            stack.addLast(i);
         }
-        return stringBuilder.length()==0?"0":stringBuilder.toString();
+        while (!stack.isEmpty()) {
+            int curHeight = heights[stack.pollLast()];
+            while (!stack.isEmpty() && heights[stack.peekLast()] == curHeight) {
+                stack.pollLast();
+            }
+            int curWidth;
+            if (stack.isEmpty()) {
+                curWidth = len;
+            } else {
+                curWidth = len - stack.peekLast() - 1;
+            }
+            res = Math.max(res, curHeight * curWidth);
+        }
+        return res;
+
+
     }
 
+    public static int largestRectangleArea2(int[] heights) {
+        // 这里为了代码简便，在柱体数组的头和尾加了两个高度为 0 的柱体。
+        int[] tmp = new int[heights.length + 2];
+        System.arraycopy(heights, 0, tmp, 1, heights.length);
+
+        Deque<Integer> stack = new ArrayDeque<>();
+        int area = 0;
+        for (int i = 0; i < tmp.length; i++) {
+            // 对栈中柱体来说，栈中的下一个柱体就是其「左边第一个小于自身的柱体」；
+            // 若当前柱体 i 的高度小于栈顶柱体的高度，说明 i 是栈顶柱体的「右边第一个小于栈顶柱体的柱体」。
+            // 因此以栈顶柱体为高的矩形的左右宽度边界就确定了，可以计算面积
+            while (!stack.isEmpty() && tmp[i] < tmp[stack.peek()]) {
+                int h = tmp[stack.pop()];
+                area = Math.max(area, (i - stack.peek() - 1) * h);
+            }
+            stack.push(i);
+        }
+
+        return area;
+    }
+
+
     public static void main(String[] args) {
-        System.out.println(removeKdigits("10200",1));
+        //Assert.isTrue(largestRectangleArea(new int[]{2,1,5,6,2,3})==10,"程序异常");
+        Assert.isTrue(largestRectangleArea2(new int[]{2,1,5,6,2,3})==10,"程序异常");
 
     }
 }
