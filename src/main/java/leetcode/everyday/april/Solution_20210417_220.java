@@ -129,7 +129,6 @@ public class Solution_20210417_220 {
         //Assert.isTrue(containsNearbyAlmostDuplicate(new int[]{1,0,1,1},1,2)==true,"程序异常");
         //Assert.isTrue(containsNearbyAlmostDuplicate(new int[]{1,5,9,1,5,9},2,3)==false,"程序异常");
         Assert.isTrue(containsNearbyAlmostDuplicate(new int[]{-2147483648,2147483647},1,1)==false,"程序异常");
-
         System.out.println("-------------运行通过-------------");
     }
 }
