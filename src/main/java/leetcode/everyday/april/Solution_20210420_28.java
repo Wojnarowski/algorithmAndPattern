@@ -41,13 +41,14 @@ import org.springframework.util.Assert;
  *
  *
  *  
- *
+ *解题答案
+ * https://leetcode-cn.com/problems/implement-strstr/solution/shua-chuan-lc-shuang-bai-po-su-jie-fa-km-tb86/
  *
  */
 public class Solution_20210420_28 {
 
     /**
-     * 暴力解法
+     * 朴素解法
      * @param haystack
      * @param needle
      * @return
