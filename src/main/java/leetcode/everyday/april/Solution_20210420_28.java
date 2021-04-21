@@ -79,7 +79,62 @@ public class Solution_20210420_28 {
         }
         return -1;
     }
-        public static void main(String[] args) {
+
+
+    /**
+     * 解法2   KMP算法
+     *   1.获取next数组
+     *   2.利用next数组进行匹配
+     *
+     *   next 数组结算方法
+     *   1.初始化数组
+     *   2.判断前后不相等情况
+     *   3.判断前后相等情况
+     *   4.给next数组赋值
+     *
+     *   https://leetcode-cn.com/problems/implement-strstr/solution/dai-ma-sui-xiang-lu-kmpsuan-fa-xiang-jie-mfbs/
+     */
+    public static  void getNext(int [] next,String s){
+        // j 为前缀的末尾，i为后缀末尾
+        int j=-1;
+        next[0]=-1;
+        for(int i=1;i<s.length();i++){
+            while(j>0 && s.charAt(i)!=s.charAt(j+1)){
+                j=next[j];
+            }
+            if(s.charAt(i)==s.charAt(j+1)){
+                j++;
+            }
+            next[i]=j;
+        }
+
+    }
+
+    public static int strStr2(String haystack, String needle) {
+        if(needle.length()==0){
+            return 0;
+        }
+
+        int [] next=new int[needle.length()];
+        getNext(next,needle);
+
+        int j=-1;
+        for(int i=0;i<haystack.length();i++){
+            while(j>=0 && haystack.charAt(i) != needle.charAt(j+1)){
+                j = next[j];
+            }
+            if(haystack.charAt(i)==needle.charAt(j+1)){
+                j++;
+            }
+            if(j==needle.length()-1){
+                return (i-needle.length()+1);
+            }
+        }
+        return -1;
+    }
+
+
+    public static void main(String[] args) {
         System.out.println("-------------开始执行-------------");
         //Assert.isTrue(strStr("hello","ll")==2,"程序异常");
         //Assert.isTrue(strStr("aaaaa","bba")==-1,"程序异常");
