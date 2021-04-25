@@ -37,8 +37,6 @@ public class Solution_20210425_897 {
 
     TreeNode ans = new TreeNode();
 
-
-
     public TreeNode increasingBST(TreeNode root) {
 
         TreeNode dummy = ans;
