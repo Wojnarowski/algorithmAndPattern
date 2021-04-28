@@ -45,16 +45,39 @@ import org.springframework.util.Assert;
  */
 public class Solution_20210428_633 {
 
-    public static  boolean judgeSquareSum(int c) {
-      int max =(int) Math.sqrt(c);
-      for(int a=0;a<=max;a++){
-        int b = (int) Math.sqrt(c-a*a);
-        if(a*a+b*b==c){
-            return true;
+       public static  boolean judgeSquareSum(int c) {
+        int max =(int) Math.sqrt(c);
+        for(int a=0;a<=max;a++){
+            int b = (int) Math.sqrt(c-a*a);
+            if(a*a+b*b==c){
+                return true;
+            }
         }
-      }
-      return false;
+        return false;
     }
+
+    /**
+     * 双指针
+     * @param c
+     * @return
+     */
+    public static  boolean judgeSquareSum2(int c) {
+       int a=0,b=(int)Math.sqrt(c);
+       while(a<b){
+           int cur = a*a+b*b;
+           if(cur==c){
+               return true;
+           }
+           else if(cur<c){
+                a++;
+           }
+           else{
+               b--;
+           }
+       }
+       return false;
+    }
+
 
 
     public static void main(String[] args) {
