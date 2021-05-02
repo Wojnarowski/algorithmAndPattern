@@ -51,6 +51,7 @@ public class Solution_20210501_690 {
         for (int subId : subordinates) {
             total += dfs(subId);
         }
+
         return total;
     }
 
