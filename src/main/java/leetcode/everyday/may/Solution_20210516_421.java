@@ -55,6 +55,78 @@ public class Solution_20210516_421 {
         return max;
     }
 
+    /**
+     * O1 内解决问题
+     * @param nums
+     * @return
+     */
+
+    static Tire root=new Tire();
+    static final int key=30;
+    public  static int findMaximumXORByO1(int[] nums) {
+        int res=0;
+        for(int i:nums){
+            add(i);
+        }
+        for(int i:nums){
+            res=Math.max(res,check(i));
+        }
+        return res;
+
+    }
+    public static void add(int num){
+        Tire cur=root;
+        for(int i=key;i>=0;i--){
+            int val=(num>>i)&1;
+            if(val==0){
+                if(cur.left==null){
+                    Tire node=new Tire();
+                    cur.left=node;
+                }
+                cur=cur.left;
+            }else{
+                if(cur.right==null){
+                    Tire node=new Tire();
+                    cur.right=node;
+                }
+                cur=cur.right;
+            }
+        }
+    }
+
+    public static int check(int num){
+        Tire cur=root;
+        int res=0;
+        for(int i=key;i>=0;i--){
+            int x=num>>i&1;
+            if(x==0){
+                if(cur.right!=null){
+                    cur=cur.right;
+                    res=res*2+1;
+                }else{
+                    cur=cur.left;
+                    res=res*2;
+                }
+            }else{
+                if(cur.left!=null){
+                    cur=cur.left;
+                    res=res*2+1;
+                }else{
+                    cur=cur.right;
+                    res=res*2;
+                }
+            }
+        }
+        return res;
+    }
+
+    static class Tire{
+        Tire left=null;
+        Tire right=null;
+    }
+
+
+
     public static void main(String[] args) {
         System.out.println("-------------开始执行-------------");
         Assert.isTrue(findMaximumXOR(new int[]{3,10,5,25,2,8})==28,"程序异常");
