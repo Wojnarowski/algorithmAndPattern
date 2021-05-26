@@ -60,6 +60,7 @@ public class Solution_20210303_338 {
             }
             else if(i%2==0){
                 result[i]=result[i/2];
+
             }
         }
 
