@@ -50,9 +50,24 @@ public class Solution_20210531_342 {
 
     }
 
+    /**
+     * 转换成2的幂求解 就和231题一样了
+     * @param n
+     * @return
+     */
+    public boolean isPowerOfFour2(int n) {
+        if(n<0){
+            return false;
+        }
+        int x = (int) Math.sqrt(n);
+        return ((x*x ==n)  && ((x &(x-1))==0));
+
+
+    }
+
 
     public static void main(String[] args) {
-        System.out.println("-------------开始执行-------------");
+        System.out.println("-------------开始执行------ -------");
         //Assert.isTrue(strangePrinter("aba")==2,"程序异常");
         //topKFrequent(new String[]{"i", "love", "leetcode", "i", "love", "coding"},2);
         System.out.println("-------------运行通过-------------");
