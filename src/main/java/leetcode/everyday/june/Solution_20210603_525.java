@@ -38,6 +38,7 @@ public class Solution_20210603_525 {
 
     /**
      * 前缀和+hash表
+     *  TODO 并不是1和0间隔出现
      * @param nums
      * @return
      */
@@ -67,7 +68,7 @@ public class Solution_20210603_525 {
 
     public static void main(String[] args) {
         System.out.println("-------------开始执行-------------");
-        Assert.isTrue(findMaxLength(new int[]{1,1,0})==2,"程序异常");
+        Assert.isTrue(findMaxLength(new int[]{1,0,1,0,1})==5,"程序异常");
         System.out.println("-------------运行通过-------------");
     }
 }
