@@ -68,7 +68,7 @@ public class Solution_20210603_525 {
 
     public static void main(String[] args) {
         System.out.println("-------------开始执行-------------");
-        Assert.isTrue(findMaxLength(new int[]{1,0,1,0,1})==5,"程序异常");
+        Assert.isTrue(findMaxLength(new int[]{1,0,1,0,0,0,0,0,1,1,1,1})==12,"程序异常");
         System.out.println("-------------运行通过-------------");
     }
 }
