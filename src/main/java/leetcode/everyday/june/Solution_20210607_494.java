@@ -1,5 +1,7 @@
 package leetcode.everyday.june;
 
+import org.springframework.util.Assert;
+
 /**
  *q 494 目标和
  *
@@ -95,10 +97,40 @@ public class Solution_20210607_494 {
         return dp[len - 1][sum + s];
     }
 
+    /**
+     * 套用背包规则
+     * @param nums
+     * @param S
+     * @return
+     */
+    public  static int findTargetSumWaysDP1(int[] nums, int S) {
+        int n = nums.length;
+        int sum = 0;
+        for (int i=0;i<n;i++) {
+
+            sum += nums[i];
+        }
+
+        if(S > sum || (S + sum) % 2 == 1) return 0;
+
+        int target = (S + sum) / 2;
+        int[] dp = new int[target + 1];
+        dp[0] = 1;
+        for (int i=0;i<n;i++){
+
+            for (int j=target;j>=nums[i];j--) {
+
+                dp[j] = dp[j] + dp[j - nums[i]];
+            }
+        }
+        return dp[target];
+    }
+
+
 
     public static void main(String[] args) {
         System.out.println("-------------开始执行-------------");
-        //Assert.isTrue(removeElements(listNodeA1,6)==null,"程序异常");
+        Assert.isTrue(findTargetSumWaysDP1(new int[]{1,1,1,1,1},3)==5,"程序异常");
         System.out.println("-------------运行通过-------------");
     }
 }
