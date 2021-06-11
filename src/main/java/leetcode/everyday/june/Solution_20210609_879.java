@@ -45,7 +45,6 @@ public class Solution_20210609_879 {
     int mod = (int)1e9+7;
     public int profitableSchemes(int n, int minProfit, int[] group, int[] profit) {
         int m = group.length;
-
         long[][][] f = new long[m + 1][n + 1][minProfit + 1];
         for (int i = 0; i <= n; i++) f[0][i][0] = 1;
         for (int i = 1; i <= m; i++) {
