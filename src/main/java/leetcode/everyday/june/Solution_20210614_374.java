@@ -43,18 +43,19 @@ package leetcode.everyday.june;
  */
 public class Solution_20210614_374 {
     public int guessNumber(int n) {
-        int l=1,r=n;
-        while(l<r){
-            long temp =(long)l+r >>1;
-            int  mid=(int)temp;
-            if(guess(mid)<=0){
-                r=mid;
-            }
-            else{
-                l=mid+1;
-            }
-        }
-        return r;
+//        int l=1,r=n;
+//        while(l<r){
+//            long temp =(long)l+r >>1;
+//            int  mid=(int)temp;
+//            if(guess(mid)<=0){
+//                r=mid;
+//            }
+//            else{
+//                l=mid+1;
+//            }
+//        }
+//        return r;
+        return 0;
     }
 
     public static void main(String[] args) {
