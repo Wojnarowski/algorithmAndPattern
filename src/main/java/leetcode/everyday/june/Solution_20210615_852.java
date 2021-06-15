@@ -73,6 +73,30 @@ public class Solution_20210615_852 {
         return r;
     }
 
+    /**
+     * 三分法
+     * @param arr
+     * @return
+     */
+    public static int peakIndexInMountainArray2(int[] arr) {
+        if(arr.length<3){
+            return 0;
+        }
+
+        int l=1,r=arr.length-1;
+        while(l<r){
+            int m1 = l+(r-l)/3;
+            int m2 = r-(r-l)/3;
+            if(arr[m1]>arr[m2]){
+                r=m2-1;
+            }
+            else{
+                l=m1+1;
+            }
+        }
+        return r;
+    }
+
 
     public static void main(String[] args) {
         System.out.println("-------------开始执行-------------");
