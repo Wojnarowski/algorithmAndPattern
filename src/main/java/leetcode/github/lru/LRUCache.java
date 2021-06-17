@@ -1,11 +1,7 @@
 package leetcode.github.lru;
 
-import org.w3c.dom.Node;
-
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @ClassName LRUCache
