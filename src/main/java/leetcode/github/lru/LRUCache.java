@@ -1,6 +1,10 @@
 package leetcode.github.lru;
 
+import org.w3c.dom.Node;
+
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -31,6 +35,77 @@ import java.util.concurrent.ConcurrentHashMap;
  * -----------------------------------------------------佛祖保佑--------永无BUG
  */
 public class LRUCache {
+
+    // 双向链表节点定义
+    class Node{
+        int key;
+        int val;
+        Node pre;
+        Node next;
+    }
+    //模拟缓存容量
+    private int capacity;
+
+    //保存链表的头结点和尾节点
+    private Node first;
+    private Node last;
+
+    //从key到node映射的map
+    private Map<Integer, Node> map;
+
+    public LRUCache(int capacity){
+        this.capacity=capacity;
+        map = new HashMap<>(capacity);
+    }
+
+    public int get(int key){
+        Node node = map.get(key);
+        if(node==null){
+            return -1;
+        }
+
+        moveToHead(node);
+        return node.val;
+
+    }
+
+    public void put (int key,int value){
+
+    }
+
+    private void moveToHead(Node node) {
+        //要修改很多指针
+
+        //如果是头节点
+        if(node == first){
+            return ;
+        }
+        //如果是最后一个节点
+        else if(node == last){
+            //将最后一个节点的next指针置为空，然后last指向前一个节点
+            last.pre.next = null;
+            last=last.pre;
+        }
+        //如果是中间节点
+        else{
+            //如果是中间节点，中间节点的前节点的后指针  指向 中间节点的后节点
+            //中间节点的后节点的前指针 指向 中间节点的前节点
+            node.pre.next=node.next;
+            node.next.pre=node.pre;
+        }
+
+        //把当前节点作为头结点
+
+    }
+
+    private void addToHead(Node node) {
+
+    }
+
+    private void removeLast() {
+
+    }
+
 
 }
 
