@@ -158,6 +158,7 @@ public class LRUCache {
 
     public static void main(String[] args) {
         LRUCache cache = new LRUCache(5);
+
         cache.put(1,1);
         System.out.println(cache);
         cache.put(2,2);
