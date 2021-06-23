@@ -38,17 +38,8 @@ public class LRUCache {
         int val;
         Node pre;
         Node next;
-
-//        @Override
-//        public String toString() {
-//            return "Node{" +
-//                    "key=" + key +
-//                    ", val=" + val +
-//                    ", pre=" + pre +
-//                    ", next=" + next +
-//                    '}';
-//        }
     }
+
     //模拟缓存容量
     private int capacity;
 
