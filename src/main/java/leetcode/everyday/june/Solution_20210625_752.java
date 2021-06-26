@@ -102,7 +102,6 @@ public class Solution_20210625_752 {
             step++;
             q1 = q2; // 此时 temp 相当于 q1，交换 q1 和q2，下一轮 while 会扩散 q2
             q2 = temp;
-
         }
 
         return -1;
