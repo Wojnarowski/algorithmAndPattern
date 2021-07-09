@@ -74,6 +74,35 @@ public class Solution_20210709_1710 {
             v=_v;
         }
     }
+
+
+    /**
+     * 摩尔投票法
+     * @param nums
+     * @return
+     */
+    public static  int majorityElement2(int[] nums) {
+        int candidate = -1;
+        int count = 0;
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+            }
+            if (num == candidate) {
+                count++;
+            } else {
+                count--;
+            }
+        }
+        count = 0;
+        int length = nums.length;
+        for (int num : nums) {
+            if (num == candidate) {
+                count++;
+            }
+        }
+        return count * 2 > length ? candidate : -1;
+    }
     public static void main(String[] args) {
         System.out.println("-------------开始执行-------------");
         //Assert.isTrue(majorityElement(new int[]{1,2,5,9,5,9,5,5,5})==5,"程序异常");
