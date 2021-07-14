@@ -1,4 +1,4 @@
-package sword2offer.test20210705;
+package sword2offer.test20210714;
 
 /**
  * @ClassName Solution10
@@ -27,62 +27,53 @@ package sword2offer.test20210705;
  * ---------------------------------------^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  * -----------------------------------------------------佛祖保佑--------永无BUG
  *
- * 写一个函数，输入 n ，求斐波那契（Fibonacci）数列的第 n 项（即 F(N)）。
- * 斐波那契数列的定义如下：
- *
- * F(0) = 0,   F(1) = 1
- * F(N) = F(N - 1) + F(N - 2), 其中 N > 1.
- * 斐波那契数列由 0 和 1 开始，之后的斐波那契数就是由之前的两数相加而得出。
+ * 一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。
+ * 求该青蛙跳上一个 n 级的台阶总共有多少种跳法。
  *
  * 答案需要取模 1e9+7（1000000007），如计算初始结果为：1000000008，请返回 1。
  *
- *  
- *
  * 示例 1：
- *
  * 输入：n = 2
- * 输出：1
+ * 输出：2
+ *
+ *
  * 示例 2：
+ * 输入：n = 7
+ * 输出：21
  *
- * 输入：n = 5
- * 输出：5
- *  
  *
+ * 示例 3：
+ * 输入：n = 0
+ * 输出：1
  * 提示：
  *
  * 0 <= n <= 100
  *
+ *
+ *
  */
 public class Solution10 {
 
+
     /**
-     * 动态规划最快
+     * 动态规划
+     *
      * @param n
      * @return
      */
-    public int fib(int n) {
-        if(n==0){
-            return 0;
+    public int numWays(int n) {
+        if(n<2){
+            return 1;
         }
-        int [] dp= new int[n+1];
-        dp[0] = 0;
-        dp[1] = 1;
-
+        long dp[] = new long[n+1];
+        dp[0]=1;
+        dp[1]=1;
         for(int i=2;i<=n;i++){
-            dp[i] = dp[i-1] + dp[i-2];
-            dp[i] %= 1000000007;
+            dp[i]=dp[i-2]+dp[i-1];
+            dp[i] %= (Math.pow(10,9) +7);
         }
-        return dp[n];
+        return (int)dp[n];
 
-    }
-
-    public static void main(String[] args) {
-        int [] nums = new int[]{4,1,2,1,2,4,4};
-            int ans=0;
-            for(int i=0;i<nums.length;i++){
-                ans^=nums[i];   //异或运算
-            }
-        System.out.println(ans);
     }
 
 }
