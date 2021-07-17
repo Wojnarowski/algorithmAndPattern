@@ -39,7 +39,7 @@ public class Solution_20210717_42 {
         dp[0]=nums[0];
         int ans =dp[0];
         for(int i=1;i<n;i++){
-            dp[i]=Math.max(nums[i],dp[n-1]=nums[i]);
+            dp[i]=Math.max(nums[i],dp[i-1]+nums[i]);
             ans = Math.max(ans,dp[i]);
         }
         return ans;
