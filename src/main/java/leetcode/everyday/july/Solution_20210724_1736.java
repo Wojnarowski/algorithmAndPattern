@@ -62,8 +62,6 @@ public class Solution_20210724_1736 {
         System.out.println("-------------开始执行-------------");
         //int test[][] = new int[][]{{1,2},{3,4},{5,6}};
         //Assert.isTrue(isCovered(test,2,5)==true,"程序异常");
-
-
         int test[][] = new int[][]{{1,2}};
         //Assert.isTrue(isCovered(test,1,50)==true,"程序异常");
 
