@@ -65,7 +65,7 @@ public class Solution_20210724_1736 {
 
 
         int test[][] = new int[][]{{1,2}};
-        Assert.isTrue(isCovered(test,1,50)==true,"程序异常");
+        //Assert.isTrue(isCovered(test,1,50)==true,"程序异常");
 
 
 
