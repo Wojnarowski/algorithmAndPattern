@@ -44,7 +44,7 @@ public class Solution_20210728_863 {
      * 递归法
      * @param root
      * @param target
-     * @param k
+     * @param K
      * @return
      */
     public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
