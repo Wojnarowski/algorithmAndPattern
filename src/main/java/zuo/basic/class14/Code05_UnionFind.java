@@ -93,6 +93,19 @@ public class Code05_UnionFind {
         }
 
         public void union(V a,V b){
+            Node<V> ahead = findParent(nodes.get(a));
+            Node<V> bhead = findParent(nodes.get(b));
+            if( ahead != bhead ){
+                int aSetSize = sizeMap.get(ahead);
+                int bSetSize = sizeMap.get(bhead);
+
+                Node<V> big = aSetSize>=bSetSize?ahead:bhead;
+                Node<V> small = big==ahead?bhead:ahead;
+
+                parents.put(small, big);
+                sizeMap.put(big,aSetSize+bSetSize);
+                sizeMap.remove(small);
+            }
 
         }
 
