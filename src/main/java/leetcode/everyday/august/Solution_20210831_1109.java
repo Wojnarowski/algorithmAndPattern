@@ -98,8 +98,13 @@ public class Solution_20210831_1109 {
         return ans;
 
     }
-    //https://leetcode-cn.com/problems/corporate-flight-bookings/solution/tong-ge-lai-shua-ti-la-yi-ti-liang-jie-t-0qse/
 
+    /**
+     * 暴力，可以通过
+     * @param bookings
+     * @param n
+     * @return
+     */
     public static  int[] corpFlightBookings2(int[][] bookings, int n) {
         int[] ans = new int[n];
         for (int[] booking : bookings) {
@@ -109,6 +114,31 @@ public class Solution_20210831_1109 {
         }
         return ans;
 
+    }
+
+
+    /**
+     * 查分数组
+     * https://leetcode-cn.com/problems/corporate-flight-bookings/solution/tong-ge-lai-shua-ti-la-yi-ti-liang-jie-t-0qse/
+     * @param bookings
+     * @param n
+     * @return
+     */
+    public static  int[] corpFlightBookings3(int[][] bookings, int n) {
+        // 先计算差分数组，再计算前缀和，注意下标的处理
+        int[] arr = new int[n];
+        //构建查分数组
+        for (int[] booking : bookings) {
+            arr[booking[0] - 1] += booking[2];
+            if (booking[1] < n) {
+                arr[booking[1]] -= booking[2];
+            }
+        }
+        //计算前缀和
+        for (int i = 1; i < n; i++) {
+            arr[i] += arr[i - 1];
+        }
+        return arr;
     }
 
 
