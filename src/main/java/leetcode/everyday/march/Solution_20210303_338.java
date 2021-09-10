@@ -1,8 +1,6 @@
 package leetcode.everyday.march;
 
-import com.sun.deploy.util.ArrayUtil;
 import leetcode.everyday.AlgorithmUtil;
-import org.springframework.util.Assert;
 
 /**
  给定一个非负整数 num。对于 0 ≤ i ≤ num 范围中的每个数字 i ，计算其二进制数中的 1 的数目并将它们作为数组返回。
