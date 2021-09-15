@@ -81,6 +81,26 @@ public class Solution_20210915_162 {
         return slow;
     }
 
+    /**
+     * 二分算法
+     * @param nums
+     * @return
+     */
+    public static int findPeakElement3(int[] nums) {
+        int n=nums.length;
+        int left=0,right=n-1;
+        while(left<right){
+            int mid =left+((right-left)>>2);
+            if(nums[mid]>nums[mid+1]){
+                right=mid;
+            }
+            else{
+                left=mid+1;
+            }
+        }
+        return right;
+    }
+
 
     public static void main(String[] args) {
         System.out.println("-------------开始执行-------------");
