@@ -106,6 +106,18 @@ public class Solution_20211004_482 {
     }
 
 
+    public static  String licenseKeyFormatting3(String s, int k) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = s.length() - 1, cnt = 0; i >= 0; i--) {
+            if (s.charAt(i) == '-') continue;
+            if (cnt == k && (cnt = 0) >= 0) sb.append("-");
+            sb.append(s.charAt(i));
+            cnt++;
+        }
+        return sb.reverse().toString().toUpperCase();
+    }
+
+
     public static void main(String[] args) {
         System.out.println("-------------开始执行-------------");
         int [] array= new int[]{1,2,3,1};
