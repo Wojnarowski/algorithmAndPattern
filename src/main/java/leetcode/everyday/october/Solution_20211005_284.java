@@ -80,9 +80,7 @@ public class Solution_20211005_284 {
     public static void main(String[] args) {
         System.out.println("-------------开始执行-------------");
         int [] array= new int[]{1,2,3,1};
-        //Assert.isTrue(licenseKeyFormatting2("5F3Z-2e-9-w",4).equals("5F3Z-2E9W"),"程序异常");
-        //Assert.isTrue(licenseKeyFormatting2("2-5g-3-J",2).equals("2-5G-3J"),"程序异常");
-        Assert.isTrue(licenseKeyFormatting2("---",3).equals("5F3Z-2E9W"),"程序异常");
+        //Assert.isTrue(licenseKeyFormatting2("---",3).equals("5F3Z-2E9W"),"程序异常");
 
         System.out.println("-------------运行通过-------------");
     }
