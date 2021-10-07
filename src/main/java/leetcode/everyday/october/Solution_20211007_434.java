@@ -42,6 +42,17 @@ public class Solution_20211007_434 {
 
     }
 
+    public int countSegments2(String s) {
+        int n = s.length();
+        int ans = 0;
+        for (int i = 0; i < n; ) {
+            if (s.charAt(i) == ' ' && i++ >= 0) continue;
+            while (i < n && s.charAt(i) != ' ') i++;
+            ans++;
+        }
+        return ans;
+    }
+
 
     public static void main(String[] args) {
         System.out.println("-------------开始执行-------------");
