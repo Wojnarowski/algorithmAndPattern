@@ -1,8 +1,6 @@
 package leetcode.everyday.october;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  *q 496 下一个更大元素 I
@@ -77,6 +75,29 @@ public class Solution_20211026_496 {
             }
         }
         return ans;
+    }
+
+
+    /**
+     * 单调栈
+     * @param nums1
+     * @param nums2
+     * @return
+     */
+    public static int[] nextGreaterElement2(int[] nums1, int[] nums2) {
+        int n = nums1.length, m = nums2.length;
+        Deque<Integer> d = new ArrayDeque<>();
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = m - 1; i >= 0; i--) {
+            int x = nums2[i];
+            while (!d.isEmpty() && d.peekLast() <= x) d.pollLast();
+            map.put(x, d.isEmpty() ? -1 : d.peekLast());
+            d.addLast(x);
+        }
+        int[] ans = new int[n];
+        for (int i = 0; i < n; i++) ans[i] = map.get(nums1[i]);
+        return ans;
+
     }
     public static void main(String[] args) {
         System.out.println("-------------开始执行-------------");
