@@ -78,6 +78,30 @@ public class Solution_20211030_260 {
         return ans;
     }
 
+    public int[] singleNumber3(int[] nums) {
+        // 所有数异或的结果
+        int xor = 0;
+        for (int num : nums) {
+            xor ^= num;
+        }
+
+        // 取出不同的那个位，我们这里取最右边的那个1
+        int bit = xor & (-xor);
+
+        // 按这个位将所有数分成两半分别异或的结果就是我们要找的那两个数
+        int x = 0, y = 0;
+        for (int num : nums) {
+            if ((num & bit) == 0) {
+                x ^= num;
+            } else {
+                y ^= num;
+            }
+        }
+
+        // 构造返回值
+        return new int[] {x, y};
+    }
+
     public static void main(String[] args) {
         System.out.println("-------------开始执行-------------");
 //        int [] num1= new int[]{4,1,2};
