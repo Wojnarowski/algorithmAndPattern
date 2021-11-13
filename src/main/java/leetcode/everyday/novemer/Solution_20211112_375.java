@@ -36,20 +36,23 @@ import java.util.Arrays;
  *
  */
 public class Solution_20211112_375 {
-
-    int mod = (int)1e9+7;
-    public int kInversePairs(int n, int k) {
-        int[][] f = new int[n + 1][k + 1];
-        int[][] sum = new int[n + 1][k + 1];
-        f[1][0] = 1;
-        Arrays.fill(sum[1], 1);
-        for (int i = 2; i <= n; i++) {
-            for (int j = 0; j <= k; j++) {
-                f[i][j] = j < i ? sum[i - 1][j] : (sum[i - 1][j] - sum[i - 1][j - (i - 1) - 1] + mod) % mod;
-                sum[i][j] = j == 0 ? f[i][j] : (sum[i][j - 1] + f[i][j]) % mod;
-            }
+    static int N = 210;
+    static int[][] cache = new int[N][N];
+    public int getMoneyAmount(int n) {
+        return dfs(1, n);
+    }
+    int dfs(int l, int r) {
+        if (l >= r) return 0;
+        if (cache[l][r] != 0) return cache[l][r];
+        int ans = 0x3f3f3f3f;
+        for (int x = l; x <= r; x++) {
+            // 当选择的数位 x 时，至少需要 cur 才能猜中数字
+            int cur = Math.max(dfs(l, x - 1), dfs(x + 1, r)) + x;
+            // 在所有我们可以决策的数值之间取最优
+            ans = Math.min(ans, cur);
         }
-        return f[n][k];
+        cache[l][r] = ans;
+        return ans;
     }
 
     public static void main(String[] args) {
