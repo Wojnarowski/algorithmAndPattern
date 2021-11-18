@@ -47,7 +47,7 @@ import java.util.List;
  * 通过次数6,852提交次数16,868
  *
  */
-public class Solution_20211116_391 {
+public class Solution_20211117_391 {
 
     public boolean isRectangleCover(int[][] rectangles) {
         int n = rectangles.length;
