@@ -53,7 +53,7 @@ package leetcode.everyday.december;
  *
  *
  */
-public class Solution_20211218_997 {
+public class Solution_20211219_997 {
 
 
     public int findJudge(int n, int[][] trust) {
