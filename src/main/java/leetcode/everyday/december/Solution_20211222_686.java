@@ -49,9 +49,8 @@ public class Solution_20211222_686 {
         StringBuilder sb = new StringBuilder();
         int ans = 0;
         while (sb.length() < b.length() && ++ans > 0) sb.append(a);
-        Clock clock = Clock.systemDefaultZone();
-        long start = clock.millis();
-        while (clock.millis() - start < 100) {
+        long start = System.currentTimeMillis();
+        while (System.currentTimeMillis() - start < 100) {
             if (sb.indexOf(b) != -1) return ans;
             sb.append(a);
             ans++;
