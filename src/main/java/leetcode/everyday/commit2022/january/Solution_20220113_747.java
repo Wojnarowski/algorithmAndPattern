@@ -38,7 +38,7 @@ import java.util.Arrays;
  *
  *
  */
-public class Solution_20220112_747 {
+public class Solution_20220113_747 {
 
     public int dominantIndex(int[] nums) {
         int n=nums.length;
