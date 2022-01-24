@@ -1,9 +1,6 @@
 package leetcode.everyday.commit2022.january;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * 2045  到达目的地的第二短时间
