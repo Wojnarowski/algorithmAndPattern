@@ -60,7 +60,7 @@ import java.util.Map;
  */
 public class Solution_20220127_2047 {
 
-    public int countValidWords(String sentence) {
+       public int countValidWords(String sentence) {
         String[] ss = sentence.split(" ");
         int ans = 0;
         for (String s : ss) if (check(s)) ans++;
