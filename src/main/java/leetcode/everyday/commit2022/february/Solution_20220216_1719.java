@@ -1,7 +1,6 @@
 package leetcode.everyday.commit2022.february;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 1719   重构一棵树的方案数
@@ -74,7 +73,7 @@ public class Solution_20220216_1719 {
             set.add(a); set.add(b);
         }
         List<Integer> list = new ArrayList<>(set);
-        Collections.sort(list, (a,b)->cnts[b]-cnts[a]);
+        Collections.sort(list, (a, b)->cnts[b]-cnts[a]);
         int n = list.size(), root = list.get(0);
         if (m < n - 1) return 0; // 森林
         fa[root] = -1;
