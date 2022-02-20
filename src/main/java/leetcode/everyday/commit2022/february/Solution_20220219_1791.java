@@ -38,7 +38,7 @@ package leetcode.everyday.commit2022.february;
  *
  *
  */
-public class Solution_20220217_1791 {
+public class Solution_20220219_1791 {
 
     public int findCenter(int[][] edges) {
         int a = edges[0][0], b = edges[0][1];
