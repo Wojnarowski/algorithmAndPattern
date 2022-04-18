@@ -41,7 +41,7 @@ import java.util.*;
  *
  *
  */
-public class Solution_20220416_819 {
+public class Solution_20220417_819 {
 
     public String mostCommonWord(String paragraph, String[] banned) {
         Set<String> set = new HashSet<>();
