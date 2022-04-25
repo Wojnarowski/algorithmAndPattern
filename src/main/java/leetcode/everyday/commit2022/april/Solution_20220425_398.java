@@ -35,8 +35,13 @@ public class Solution_20220425_398 {
 
     public int pick(int target) {
         int ans = 0;
-        for (int i = 0, cnt = 0; i < nums.length; ++i)
-            if (nums[i] == target && rd.nextInt(++cnt) == 0) ans = i; // 水塘抽样
+        for (int i = 0, cnt = 0; i < nums.length; ++i){
+            if (nums[i] == target && rd.nextInt(++cnt) == 0) {
+                // 水塘抽样
+                ans = i;
+            }
+
+        }
         return ans;
     }
     public static void main(String[] args) {
