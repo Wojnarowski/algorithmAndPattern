@@ -28,7 +28,7 @@ import java.util.Random;
 public class Solution_20220425_398 {
     int[] nums;
     Random rd;
-    public Solution(int[] nums) {
+    public Solution_20220425_398(int[] nums) {
         this.nums = nums;
         rd = new Random();
     }
