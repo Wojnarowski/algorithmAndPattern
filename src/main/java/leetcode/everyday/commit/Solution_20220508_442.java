@@ -11,6 +11,7 @@ import java.util.*;
 public class Solution_20220508_442 {
 
     public List<Integer> findDuplicates(int[] nums) {
+
         List<Integer> res = new ArrayList<>();
         for (int num : nums) {
             if (nums[Math.abs(num) - 1] < 0) {
@@ -20,7 +21,6 @@ public class Solution_20220508_442 {
             }
         }
         return res;
-
     }
 
 
