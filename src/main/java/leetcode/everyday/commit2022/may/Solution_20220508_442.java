@@ -1,4 +1,4 @@
-package leetcode.everyday.commit;
+package leetcode.everyday.commit2022.may;
 
 import java.util.*;
 
