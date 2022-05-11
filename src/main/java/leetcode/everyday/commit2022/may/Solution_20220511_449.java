@@ -1,8 +1,6 @@
 package leetcode.everyday.commit2022.may;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /**
  *449 序列化和反序列化二叉搜索树
@@ -52,38 +50,37 @@ public class Solution_20220511_449 {
 
 
     public String serialize(TreeNode root) {
-        if (root == null) return null;
-        StringBuilder builder = new StringBuilder();
-        rserialize(root,builder);
-        builder.deleteCharAt(builder.length() - 1);
-        return builder.toString();
+        StringBuilder sb = new StringBuilder();
+        dfs_s(root, sb);
+        return sb.toString();
     }
 
-    private void rserialize(TreeNode root, StringBuilder builder) {
-        if (root == null){
-            builder.append("#,");
-            return;
-        }
-        builder.append(root.val + ",");
-        rserialize(root.left,builder);
-        rserialize(root.right,builder);
+    void dfs_s(TreeNode cur, StringBuilder sb){
+        // 空结点不序列化
+        if(cur == null) return;
+        sb.append(cur.val + " ");
+        dfs_s(cur.left, sb);
+        dfs_s(cur.right, sb);
     }
 
-    // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
-        if (data.length() == 0 || data == "") return null;
-        Queue<String> queue = new LinkedList<>(Arrays.asList(data.split(",")));
-        return dfs(queue);
+        if(data.length() == 0) return null;
+        List<Integer> list = new ArrayList<>();
+        for(String str : data.split(" ")){
+            list.add(Integer.parseInt(str));
+        }
+        return dfs_d(list, 0, list.size() - 1);
     }
 
-    private TreeNode dfs(Queue<String> queue) {
-        String poll = queue.poll();
-        if (poll.equals("#")){
-            return null;
-        }
-        TreeNode root = new TreeNode(Integer.parseInt(poll));
-        root.left = dfs(queue);
-        root.right = dfs(queue);
+    TreeNode dfs_d(List<Integer> list, int l, int r){
+        if(l > r) return null;
+        // 根节点
+        TreeNode root = new TreeNode(list.get(l));
+        int k = l + 1;
+        // 找分界点
+        while(k <= r && list.get(k) < list.get(l)) k++;
+        root.left = dfs_d(list, l + 1, k - 1);
+        root.right = dfs_d(list, k, r);
         return root;
     }
 
