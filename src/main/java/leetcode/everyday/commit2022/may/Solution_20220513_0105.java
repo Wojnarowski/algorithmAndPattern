@@ -32,8 +32,7 @@ package leetcode.everyday.commit2022.may;
 
 public class Solution_20220513_0105 {
 
-    public boolean oneEditAway(String first, String second) {
-        int n = first.length(), m = second.length();
+    public boolean oneEditAway(String first, String second) {        int n = first.length(), m = second.length();
         if (Math.abs(n - m) > 1) return false;
         if (n > m) return oneEditAway(second, first);
         int i = 0, j = 0, cnt = 0;
@@ -50,6 +49,7 @@ public class Solution_20220513_0105 {
             }
         }
         return cnt <= 1;
+
 
     }
 
