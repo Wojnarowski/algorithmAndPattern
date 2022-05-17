@@ -20,13 +20,18 @@ public class Solution_20220517_24 {
      * @return
      */
     public ListNode swapPairs(ListNode head) {
-        if(head==null || head.next==null){
+        // 如果当前结点为null或当前结点下一个结点为null
+        // 则递归终止
+        if (head == null || head.next == null){
             return head;
         }
-        ListNode next =head.next;
-        head.next=swapPairs(next.next);
-        next.next=head;
-        return next;
+        // subResult是head.next.next之后的结点两两交换后的头结点
+        ListNode subResult = swapPairs(head.next.next);
+        ListNode headNext = head.next;
+        headNext.next = head;
+        head.next = subResult;
+        return headNext;
+
     }
 
     public static void main(String[] args) {
