@@ -30,14 +30,29 @@ import java.util.TreeMap;
 public class Solution_20220527_17_11 {
 
     public int findClosest(String[] words, String word1, String word2) {
-        int n = words.length, ans = n;
-        for (int i = 0, p = -1, q = -1; i < n; i++) {
-            String t = words[i];
-            if (t.equals(words)) p = i;
-            if (t.equals(word2)) q = i;
-            if (p != -1 && q != -1) ans = Math.min(ans, Math.abs(p - q));
+        int ans = Integer.MAX_VALUE;
+        //单词1的位置
+        int word1Index = -1;
+        //单词2的位置
+        int word2Index = -1;
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].equals(word1)) {
+                word1Index = i;
+            }
+            if (words[i].equals(word2)) {
+                word2Index = i;
+            }
+            //计算距离并去最小值
+            if (word1Index != -1 && word2Index != -1) {
+                ans = Math.min(Math.abs(word1Index - word2Index), ans);
+                //1就是最小
+                if (ans == 1) {
+                    return ans;
+                }
+            }
         }
         return ans;
+
 
     }
 
