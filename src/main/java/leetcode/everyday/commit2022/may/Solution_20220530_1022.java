@@ -43,7 +43,7 @@ import leetcode.everyday.TreeNode;
 public class Solution_20220530_1022 {
 
     public int sumRootToLeaf(TreeNode root) {
-        return this.sumRootToLeaf( root,0),
+        return this.sumRootToLeaf( root,0);
     }
     private int sumRootToLeaf(TreeNode root, int num) {
         int ans = 0;
