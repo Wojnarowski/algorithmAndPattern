@@ -42,8 +42,8 @@ public class Solution_20220710_741 {
     static int N = 55, INF = Integer.MIN_VALUE;
     static int[][][] f = new int[2 * N][N][N];
 
-    public int cherryPickup(int[][] grip) {
-        int n = grip.length;
+    public int cherryPickup(int[][] grid) {
+        int n = grid.length;
         for (int k = 0; k <= 2 * n; k++) {
             for (int i1 = 0; i1 <= n; i1++) {
                 for (int i2 = 0; i2 <= n; i2++) {
@@ -51,13 +51,13 @@ public class Solution_20220710_741 {
                 }
             }
         }
-        f[2][1][1] = grip[0][0];
+        f[2][1][1] = grid[0][0];
         for (int k = 3; k <= 2 * n; k++) {
             for (int i1 = 1; i1 <= n; i1++) {
                 for (int i2 = 1; i2 <= n; i2++) {
                     int j1 = k - i1, j2 = k - i2;
                     if (j1 <= 0 || j1 > n || j2 <= 0 || j2 > n) continue;
-                    int A = grip[i1 - 1][j1 - 1], B = grip[i2 - 1][j2 - 1];
+                    int A = grid[i1 - 1][j1 - 1], B = grid[i2 - 1][j2 - 1];
                     if (A == -1 || B == -1) continue;
                     int a = f[k - 1][i1 - 1][i2], b = f[k - 1][i1 - 1][i2 - 1], c = f[k - 1][i1][i2 - 1], d = f[k - 1][i1][i2];
                     int t = Math.max(Math.max(a, b), Math.max(c, d)) + A;
