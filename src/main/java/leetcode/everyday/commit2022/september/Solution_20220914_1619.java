@@ -8,7 +8,7 @@ import java.util.Arrays;
  *
  *
  */
-public class Solution_20220913_1619 {
+public class Solution_20220914_1619 {
 
     public double trimMean(int[] arr) {
         Arrays.sort(arr);
