@@ -7,7 +7,7 @@ import java.util.TreeMap;
  *
  *
  */
-public class Solution_20221088_870 {
+public class Solution_20221008_870 {
 
     public int[] advantageCount(int[] nums1, int[] nums2) {
         int n = nums1.length;
