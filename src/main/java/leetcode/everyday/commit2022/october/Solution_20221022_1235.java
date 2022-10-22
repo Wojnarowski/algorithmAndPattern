@@ -7,10 +7,10 @@ import java.util.*;
  */
 public class Solution_20221022_1235 {
 
-    public int jobScheduling(int[] st, int[] et, int[] ps) {
-        int n = st.length;
+    public int jobScheduling(int[] startTime, int[] endTime, int[] profit) {
+        int n = startTime.length;
         List<int[]> list = new ArrayList<>();
-        for (int i = 0; i < n; i++) list.add(new int[]{st[i], et[i], ps[i]});
+        for (int i = 0; i < n; i++) list.add(new int[]{startTime[i], endTime[i], profit[i]});
         Collections.sort(list, (a, b)->a[1] - b[1]);
         int[] f = new int[n + 10];
         for (int i = 1; i <= n; i++) {
