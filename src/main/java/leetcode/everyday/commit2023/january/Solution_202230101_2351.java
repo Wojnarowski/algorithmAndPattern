@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 2351. 第一个出现两次的字母
  */
-public class Solution_202231201_2351 {
+public class Solution_202230101_2351 {
 
     public char repeatedCharacter(String s) {
         Set<Character> seen = new HashSet<Character>();
