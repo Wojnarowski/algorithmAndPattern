@@ -8,18 +8,27 @@ import java.util.*;
 public class Solution_202230112_1807 {
 
     public String evaluate(String s, List<List<String>> knowledge) {
-        Map<String, String> mp = new HashMap<>();
-        for (List<String> t : k) mp.put(t.get(0), t.get(1));
-        StringBuilder sb = new StringBuilder();
-        char[] arr = s.toCharArray();
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == '(') {
-                StringBuilder tem = new StringBuilder();
-                while (arr[++i] != ')') tem.append(arr[i]); //截取()之间的字符
-                sb.append(mp.getOrDefault(tem.toString(), "?")); //若不存在添加?
-            } else sb.append(arr[i]);
+        Map<String, String> map = new HashMap<>();
+        for (int i = 0; i < knowledge.size(); i++) {
+            List<String> know = knowledge.get(i);
+            map.put(know.get(0), know.get(1));
         }
-        return sb.toString();
+        char[] cs = s.toCharArray();
+        StringBuffer ans = new StringBuffer();
+        for (int i = 0; i < cs.length; i++) {
+            char c = cs[i];
+            if (c == '(') {
+                StringBuffer key = new StringBuffer();
+                while (cs[++i] != ')') {
+                    key.append(cs[i]);
+                }
+                String value = map.getOrDefault(key.toString(), "?");
+                ans.append(value);
+            } else {
+                ans.append(c);
+            }
+        }
+        return ans.toString();
 
     }
 }
