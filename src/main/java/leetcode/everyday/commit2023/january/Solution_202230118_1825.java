@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 1825. 求出 MK 平均值
  */
-public class Solution_202230117_1825 {
+public class Solution_202230118_1825 {
     // 这几个TreeMap的组成都是 num : cnt(元素：该元素出现的次数）
     // loMap表示最小的k个元素的集合，hiMap表示最大的k个元素的集合，midMap表示其他 m - 2k 个元素的集合
     private TreeMap<Integer, Integer> loMap;
@@ -20,7 +20,7 @@ public class Solution_202230117_1825 {
     private int loSize, hiSize;
 
 
-    public Solution_202230117_1825(int m, int k) {
+    public Solution_202230118_1825(int m, int k) {
         loMap = new TreeMap<>();
         midMap = new TreeMap<>();
         hiMap = new TreeMap<>();
